@@ -1,0 +1,26 @@
+@import '../scss/vars';
+h1{
+  color: $primary_color;  
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+::ng-deep mat-sidenav-container .mat-drawer-inner-container {
+  overflow: hidden;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+a{
+  text-decoration: none;
+  color: $white_color;
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
+}
