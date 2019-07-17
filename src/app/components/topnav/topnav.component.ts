@@ -6,14 +6,13 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
-  @Output() sidenavToggle = new EventEmitter<void >();
-  
+  @Output() sidenavToggle = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {
   }
 
-  onToggleSidenav(){
+  onToggleSidenav() {
     this.sidenavToggle.emit();
   }
 }

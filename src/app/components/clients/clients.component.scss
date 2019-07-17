@@ -1,0 +1,55 @@
+@import '../../../scss/vars';
+
+$accent_light: rgb(230, 29, 169);
+
+.page-title-sec {
+    padding: 20px 40px;
+    background-color: $primary_color;
+    border-bottom: 1px solid #d8d8d8;
+    background-color: white;
+    height: auto;
+   // @include flex(center,flex-start);
+}
+.mat-icon {
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+ }
+
+ mat-card {
+     border-radius: 10px;
+     margin-top: 10px;
+     height: 60px;
+    
+ }
+
+ .material-icons{
+     font-size: 27px;
+ }
+
+.inline_title {
+    line-height: 49px;
+    display: inline;
+    margin: 0 auto;
+}
+
+.display_1 {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    text-transform: none;
+    font-size: 35px;
+    line-height: 50px;
+    color: $accent_light;
+}
+
+.client-list {
+    cursor: pointer;
+   
+    &:hover{
+      .client-list__header {
+        border-left-style: solid;
+        border-left-color: $red_color;
+        border-left-width: 5px;   
+      }
+    }
+  
+  }

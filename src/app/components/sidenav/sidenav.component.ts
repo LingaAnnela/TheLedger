@@ -14,8 +14,8 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClose(){
+  onClose() {
     this.closeSidenav.emit();
   }
-  
+
 }

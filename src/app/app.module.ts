@@ -10,9 +10,10 @@ import { MaterialModule } from './shared/material.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
+import { ClientsComponent } from './components/clients/clients.component';
 
 const appRoutes: Routes = [
-  { path: '', component: DashboardComponent},
+  { path: '', component: ClientsComponent},
   { path: '**', component: DashboardComponent},
   { path: '**', component: DashboardComponent }
 
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     DashboardComponent,
     SidenavComponent,
-    TopnavComponent
+    TopnavComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,

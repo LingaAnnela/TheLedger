@@ -1,0 +1,43 @@
+<div class="page-title-sec" fxLayout="row" fxLayoutAlign="space-between center">
+    <span class="inline_title display_1">
+        Clients
+    </span>
+    <div>
+        <button mat-raised-button color="warn">
+            <span>
+                <mat-icon>add_circle</mat-icon>
+                NEW
+            </span>
+        </button>
+    </div>
+</div>
+
+<section>
+    <div *ngFor="let client of clients">
+        <mat-card fxLayout class="client-list client-list__header">
+            <span fxFlex="10%">
+                {{ client.firstName }}
+            </span>
+            <span fxFlex="60%">
+                {{ client.firstName }}
+            </span>
+            <span fxFlex="15%">
+                <button mat-stroked-button style="color : green">
+                    <span>
+                        <mat-icon>edit</mat-icon>
+                        EDIT
+                    </span>
+                </button>
+            </span>
+            <span fxFlex="15%">
+                <button mat-stroked-button color="warn">
+                    <span>
+                        <mat-icon>remove_circle</mat-icon>
+                        DELETE
+                    </span>
+                </button>
+            </span>
+        </mat-card>
+
+    </div>
+</section>
