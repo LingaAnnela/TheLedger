@@ -1,3 +1,60 @@
+<section>
+    <div class="page-title">
+        <span class="page-title__display">
+            Clients
+        </span>
+        <span class="page-title__new">
+            <button mat-raised-button color="warn">
+                <span>
+                    <mat-icon>add_circle</mat-icon>
+                    NEW
+                </span>
+            </button>
+        </span>
+    </div>
+    <div *ngFor="let client of clients">
+        <mat-card class="client-card" (click)="openDialog()">
+            <span class="client-card__item-1">
+                
+            </span>
+            <span class="client-card__item-2">
+                <span class="client-card__item-2--f-name">
+                    {{ client.firstName }}
+                </span>
+                <span class="client-card__item-2--l-name">
+                    {{ client.lastName }}
+                </span>
+            </span>
+            <span class="client-card__item-3">
+                <button mat-stroked-button style="color : green">
+                    <span>
+                        <mat-icon>edit</mat-icon>
+                        <span class="desktop-view">
+                            EDIT
+                        </span>
+                    </span>
+                </button>
+            </span>
+            <span class="client-card__item-4">
+                <button mat-stroked-button color="warn">
+                    <span>
+                        <mat-icon>delete_forever</mat-icon>
+                        <span class="desktop-view">
+                            DELETE
+                        </span>
+                    </span>
+                </button>
+            </span>
+        </mat-card>
+    </div>
+</section>
+
+<div style="margin: 100px">
+    <span>
+        TEST
+    </span>
+</div>
+
 <div class="page-title-sec" fxLayout="row" fxLayoutAlign="space-between center">
     <span class="inline_title display_1">
         Clients

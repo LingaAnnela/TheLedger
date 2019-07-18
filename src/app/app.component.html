@@ -5,13 +5,14 @@
   <mat-sidenav-content>
     <app-topnav (sidenavToggle)="sidenav.toggle()"></app-topnav>
     <main>
-      <section id="container" fxFlex fxLayoutAlign="center">
+        <router-outlet></router-outlet>
+      <!-- <section id="container" fxFlex fxLayoutAlign="center">
         <div id="child1" class="child" fxFlex.gt-md="20%" fxHide.lt-md></div>
         <div id="child2" class="child" fxFlex.gt-md="60%" fxShow.lt-md="100%">
           <router-outlet></router-outlet>
         </div>
         <div id="child3" class="child" fxFlex.gt-md="20%" fxHide.lt-md></div>
-      </section>
+      </section> -->
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
