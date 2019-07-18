@@ -141,33 +141,3 @@ $desktop : 840px;
  .material-icons{
      font-size: 27px;
  }
-
-.inline_title {
-    line-height: 49px;
-    display: inline;
-    margin: 0 auto;
-}
-
-.display_1 {
-    // font-family: Roboto,"Helvetica Neue",sans-serif;
-    font-family: 'Montserrat', sans-serif;
-    // font-family: 'Raleway', sans-serif;
-    // font-family: 'PT Serif', serif;
-    text-transform: none;
-    font-size: 35px;
-    line-height: 50px;
-    color: $accent_light;
-}
-
-.client-list {
-    cursor: pointer;
-   
-    &:hover{
-      .client-list__header {
-        border-left-style: solid;
-        border-left-color: $red_color;
-        border-left-width: 5px;   
-      }
-    }
-  
-}
