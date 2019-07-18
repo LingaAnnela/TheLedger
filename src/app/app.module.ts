@@ -16,7 +16,7 @@ import { ManageclientDialogComponent } from './components/clients/manageclient-d
 
 const appRoutes: Routes = [
   { path: '', component: ClientsComponent},
-  { path: '**', component: DashboardComponent},
+  { path: '**', component: ClientsComponent},
   { path: '**', component: DashboardComponent }
 
 ] ;
