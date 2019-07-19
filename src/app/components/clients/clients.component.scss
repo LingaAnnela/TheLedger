@@ -12,6 +12,12 @@ $desktop : 840px;
     }
 }
 
+img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
 .page-title {
     display: flex;
     flex-direction: row;

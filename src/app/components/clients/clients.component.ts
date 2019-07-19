@@ -20,6 +20,8 @@ export class ClientsComponent implements OnInit {
       {id: "12345", firstName: "Linga", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
       {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
       {id: "12345", firstName: "Linga", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
+      {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
+      {id: "12345", firstName: "Linga", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
       {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" }
   ];
   }
