@@ -1,11 +1,52 @@
-<h1 mat-dialog-title>Hi {{data.firstName}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.lastName">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.lastName" cdkFocusInitial>Ok</button>
-</div>
+
+<section class="client-dialog">
+  <div class="client-dialog__header">
+      <span *ngIf="isViewClicked" class="client-dialog__header--title">
+        Client Details
+      </span>
+      <span *ngIf="isNewClicked" class="client-dialog__header--title">
+        Add Client
+      </span>
+      <span *ngIf="isEditClicked" class="client-dialog__header--title">
+        Edit Client
+      </span>
+      <span *ngIf="isDeleteClicked" class="client-dialog__header--title">
+        Delete Client
+      </span>
+  </div>
+
+  <div class="client-dialog__body">
+    <span *ngIf="isViewClicked">
+        Currently, you are viewing the client details.
+    </span>
+    <span *ngIf="isNewClicked">
+        Please enter the details to add a new client.
+    </span>
+    <span *ngIf="isEditClicked">
+        Please make the changes as required and submit.
+    </span>
+    <span *ngIf="isDeleteClicked">
+        Are you sure, Want to delete this client?
+    </span>
+  </div>
+  <div class="client-dialog__footer">
+    <span class="client-dialog__footer--item-1">
+      <button mat-stroked-button color="warn" (click)=onCancelDialog()>
+        <span *ngIf="isViewClicked">
+          Close
+        </span>
+        <span *ngIf="!isViewClicked">
+          Cancel
+        </span>
+      </button>
+    </span>
+    <span class="client-dialog__footer--item-2" *ngIf="!isViewClicked">
+      <button mat-raised-button color="warn" *ngIf="isDeleteClicked">
+          Yes, Delete
+      </button>
+      <button mat-raised-button color="primary" *ngIf="!isDeleteClicked">
+          Submit
+      </button>
+    </span>
+  </div>
+</section>

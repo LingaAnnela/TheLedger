@@ -1,0 +1,48 @@
+@import '../../../../scss/vars';
+
+@function color($color){
+    @return map-get($colors , $color);
+}
+
+.client-dialog {
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+}
+
+.client-dialog__header {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    border-bottom: 1px solid #d8d8d8;
+    align-items: center;
+    // justify-content: center;
+    justify-content: center;
+}
+
+.client-dialog__header--title {
+    // font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    // font-family: 'Raleway', sans-serif;
+    // font-family: 'PT Serif', serif;
+    text-transform: none;
+    font-size: 30px;
+    line-height: 50px;
+    color: darken(map-get($colors, red_color), 20% )
+}
+
+.client-dialog__body {
+    flex: 6;
+}
+
+.client-dialog__footer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.client-dialog__footer--item-2 {
+    margin-left: 5px;
+}
