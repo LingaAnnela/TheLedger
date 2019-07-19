@@ -1,7 +1,5 @@
-@import '~@angular/material/theming';
 
-@mixin flex($alignitem,
-$justify) {
+@mixin flex($alignitem,$justify) {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;

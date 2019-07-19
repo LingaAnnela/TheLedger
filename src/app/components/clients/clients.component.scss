@@ -1,16 +1,5 @@
 @import '../../../scss/vars';
 
-$accent_light: rgb(230, 29, 169);
-$primary_color : rgb(0, 132, 255);
-$secondary_color: rgba(52, 209, 21, 0.692);
-$white_color: white;
-$red_color: red;
-
-$colors : (
-    primary_color : rgb(0, 132, 255),
-    secondary_color : rgba(52, 209, 21, 0.692)
-);
-
 @function color($color){
     @return map-get($colors , $color);
 }
