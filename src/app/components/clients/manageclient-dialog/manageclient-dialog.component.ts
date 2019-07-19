@@ -10,16 +10,25 @@ import { Client } from 'src/app/models/client.model';
 })
 
 export class ManageclientDialogComponent implements OnInit {
-
+  isViewClicked: boolean;
+  isEditClicked: boolean;
+  isDeleteClicked: boolean;
+  isNewClicked: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<ClientsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Client) { }
+    @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit() {
+    // Have to handle other cases
+    this.isEditClicked = (this.data == 'editClicked') ? true : false;
+    this.isNewClicked = (this.data == 'newClicked') ? true : false;
+    this.isDeleteClicked = (this.data == 'deleteClicked') ? true : false; 
+    this.isViewClicked = (this.data == 'viewClicked') ? true : false; 
+    
   }
 
-  onNoClick(): void {
+  onCancelDialog(): void {
     this.dialogRef.close();
   }
 

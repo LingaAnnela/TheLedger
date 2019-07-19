@@ -1,4 +1,5 @@
 @import '../../../scss/vars';
+@import '../../../scss/mixins.scss';
 
 @function color($color){
     @return map-get($colors , $color);
@@ -6,17 +7,28 @@
 
 $desktop : 840px;
 
-@mixin desktop {
-    @media (min-width: #{$desktop}) {
-        @content;
-    }
-}
 
 img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
 }
+
+.mat-icon {
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+ }
+
+ mat-card {
+     border-radius: 10px;
+     margin-top: 10px;
+     height: 60px;
+ }
+
+ .material-icons{
+     font-size: 27px;
+ }
 
 .page-title {
     display: flex;
@@ -42,7 +54,8 @@ img {
     text-transform: none;
     font-size: 35px;
     line-height: 50px;
-    color: color(secondary_color);
+    color: darken($color: color(red_color), $amount: 10%) ;
+    // color: lighten( color(red_color), 20% )
 }
 
 .page-title__new {
@@ -55,14 +68,14 @@ img {
     justify-content: space-between;
     border-radius: 10px;
     margin-top: 10px;
-    height: 25px;
+    height: 15px;
     margin-left: 5px;
     margin-right: 5px;
     cursor: pointer;
 
     @include desktop {
         width: 55%;
-        height: 35px;
+        height: 25px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -88,6 +101,7 @@ img {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
+
 .client-card__item-2--l-name {
     font-family: 'Montserrat', sans-serif;
     
@@ -109,30 +123,10 @@ img {
     }
 }
 
-
-
 .page-title-sec {
     padding: 20px 40px;
     background-color: $primary_color;
     border-bottom: 1px solid #d8d8d8;
     background-color: white;
     height: auto;
-   // @include flex(center,flex-start);
 }
-
-.mat-icon {
-    vertical-align: middle;
-    height: 30px;
-    width: 30px;
- }
-
- mat-card {
-     border-radius: 10px;
-     margin-top: 10px;
-     height: 60px;
-    
- }
-
- .material-icons{
-     font-size: 27px;
- }
