@@ -13,6 +13,7 @@ export class ClientsComponent implements OnInit {
   public clients : Client[];
   public height: string;
   public width: string;
+  public thisClient: Client;
 
   constructor(public dialog: MatDialog) { }
 
@@ -25,14 +26,15 @@ export class ClientsComponent implements OnInit {
       {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
       {id: "12345", firstName: "Linga", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
       {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" }
-  ];
+    ];
+
   }
 
-  openDialog(data, height, width): void {
+  openDialog(data, type, height, width): void {
     const dialogRef = this.dialog.open(ManageclientDialogComponent, {
       height: (height) ? height : '400px',
       width: (width) ? width : '600px',
-      data: (data) ? data : 'viewClicked'
+      data: {data, type}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -41,28 +43,39 @@ export class ClientsComponent implements OnInit {
     });
   }
 
-  onNewClientAdd(){
+  onViewClient(data:Client) {
     this.height = '400px';
     this.width = '600px';
     // Need to send the information as well.
-    let data = 'newClicked';
-    this.openDialog(data, this.height, this.width);
+    let type = 'viewClicked';
+    this.thisClient = data;
+    this.openDialog(this.thisClient, type, this.height, this.width);
   }
 
-  onEditClient() {
+  onAddClient() {
     this.height = '400px';
     this.width = '600px';
     // Need to send the information as well.
-    let data = 'editClicked';
-    this.openDialog(data, this.height, this.width);
+    let type = 'newClicked';
+    this.openDialog(this.thisClient, type, this.height, this.width);
   }
 
-  onDeleteClient() {
+  onEditClient(data:Client) {
+    this.height = '400px';
+    this.width = '600px';
+    // Need to send the information as well.
+    let type = 'editClicked';
+    this.thisClient = data;
+    this.openDialog(this.thisClient, type, this.height, this.width);
+  }
+
+  onDeleteClient(data:Client) {
     this.height = '400px';
     this.width = '400px';
     // Need to send the information as well.
-    let data = 'deleteClicked';
-    this.openDialog(data, this.height, this.width);
+    let type = 'deleteClicked';
+    this.thisClient = data;
+    this.openDialog(this.thisClient, type, this.height, this.width);
   }
 
 }

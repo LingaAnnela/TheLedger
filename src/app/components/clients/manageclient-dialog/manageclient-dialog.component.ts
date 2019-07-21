@@ -14,17 +14,18 @@ export class ManageclientDialogComponent implements OnInit {
   isEditClicked: boolean;
   isDeleteClicked: boolean;
   isNewClicked: boolean;
+  public client: Client;
 
   constructor(
     public dialogRef: MatDialogRef<ClientsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) { }
+    @Inject(MAT_DIALOG_DATA) public dialogData) { }
 
   ngOnInit() {
     // Have to handle other cases
-    this.isEditClicked = (this.data == 'editClicked') ? true : false;
-    this.isNewClicked = (this.data == 'newClicked') ? true : false;
-    this.isDeleteClicked = (this.data == 'deleteClicked') ? true : false; 
-    this.isViewClicked = (this.data == 'viewClicked') ? true : false; 
+    this.isEditClicked = (this.dialogData.type == 'editClicked') ? true : false;
+    this.isNewClicked = (this.dialogData.type == 'newClicked') ? true : false;
+    this.isDeleteClicked = (this.dialogData.type == 'deleteClicked') ? true : false; 
+    this.isViewClicked = (this.dialogData.type == 'viewClicked') ? true : false; 
     
   }
 
