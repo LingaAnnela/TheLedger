@@ -4,7 +4,7 @@
             Clients
         </span>
         <span class="page-title__new">
-            <button mat-raised-button color="warn" (click)="onNewClientAdd()" >
+            <button mat-raised-button color="warn" (click)="onAddClient()" >
                 <span>
                     <mat-icon>add_circle</mat-icon>
                     NEW
@@ -13,7 +13,7 @@
         </span>
     </div>
     <div *ngFor="let client of clients">
-        <mat-card class="client-card" (click)="openDialog()">
+        <mat-card class="client-card" (click)="onViewClient(client)">
             <span class="client-card__item-1">
                 <span *ngIf="client.firstName == 'Linga'">
                     <img src="../../../assets/images/dp.jpg" alt="" srcset="">
@@ -31,7 +31,7 @@
                 </span>
             </span>
             <span class="client-card__item-3">
-                <button mat-stroked-button style="color : green" (click)="onEditClient(); $event.stopPropagation()">
+                <button mat-stroked-button style="color : green" (click)="onEditClient(client); $event.stopPropagation()">
                     <span>
                         <mat-icon>edit</mat-icon>
                         <span class="desktop-view">
@@ -41,7 +41,7 @@
                 </button>
             </span>
             <span class="client-card__item-4">
-                <button mat-stroked-button color="warn" (click)="onDeleteClient(); $event.stopPropagation()">
+                <button mat-stroked-button color="warn" (click)="onDeleteClient(client); $event.stopPropagation()">
                     <span>
                         <mat-icon>delete_forever</mat-icon>
                         <span class="desktop-view">
