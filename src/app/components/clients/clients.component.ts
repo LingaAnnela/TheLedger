@@ -57,7 +57,7 @@ export class ClientsComponent implements OnInit {
     this.width = '600px';
     // Need to send the information as well.
     let type = 'newClicked';
-    this.openDialog(this.thisClient, type, this.height, this.width);
+    this.openDialog(undefined, type, this.height, this.width);
   }
 
   onEditClient(data:Client) {

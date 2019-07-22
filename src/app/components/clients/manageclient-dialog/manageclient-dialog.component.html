@@ -17,7 +17,22 @@
 
   <div class="client-dialog__body">
     <span *ngIf="isViewClicked">
-        Currently, you are viewing the client details.
+        <!-- Currently, you are viewing the client details. -->
+
+        <mat-card>
+          <p class="client-dialog__body--img">
+            <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="">
+          </p>
+          <p class="client-dialog__body--fName">
+            Name : {{ client.firstName }} {{ client.lastName }}
+          </p>
+          <p class="client-dialog__body--phNo">
+            Phone : {{ client.phoneNo }}
+          </p>
+          <p class="client-dialog__body--email">
+            Email : {{ client.email }}
+          </p>
+        </mat-card>
     </span>
     <span *ngIf="isNewClicked">
         Please enter the details to add a new client.
