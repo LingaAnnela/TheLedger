@@ -1,81 +1,80 @@
-
 <section class="client-dialog">
   <div class="client-dialog__header">
-      <span *ngIf="isViewClicked" class="client-dialog__header--title">
-        Client Details
-      </span>
-      <span *ngIf="isNewClicked" class="client-dialog__header--title">
-        Add Client
-      </span>
-      <span *ngIf="isEditClicked" class="client-dialog__header--title">
-        Edit Client
-      </span>
-      <span *ngIf="isDeleteClicked" class="client-dialog__header--title">
-        Delete Client
-      </span>
+    <span *ngIf="isViewClicked" class="client-dialog__header--title">
+      Client Details
+    </span>
+    <span *ngIf="isNewClicked" class="client-dialog__header--title">
+      Add Client
+    </span>
+    <span *ngIf="isEditClicked" class="client-dialog__header--title">
+      Edit Client
+    </span>
+    <span *ngIf="isDeleteClicked" class="client-dialog__header--title">
+      Delete Client
+    </span>
   </div>
 
   <div class="client-dialog__body">
     <span *ngIf="isViewClicked">
-        <!-- Currently, you are viewing the client details. -->
-        <mat-card>
-            <mat-nav-list>
-              <p mat-list-item class="client-dialog__body--img">
-                <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="">
-              </p>
-              <p mat-list-item class="client-dialog__body--fName">
-                <label for="">Name : </label> {{ client.firstName }} {{ client.lastName }}
-              </p>
-              <p mat-list-item class="client-dialog__body--phNo">
-                  <label for="">Phone : </label> {{ client.phoneNo }}
-              </p>
-              <p mat-list-item class="client-dialog__body--email">
-                  <label for="">Email : </label>  {{ client.email }}
-              </p>
-            </mat-nav-list>
-        </mat-card>
+      <!-- Currently, you are viewing the client details. -->
+      <mat-card>
+        <mat-nav-list>
+          <p mat-list-item class="client-dialog__body--img">
+            <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="">
+          </p>
+          <p mat-list-item class="client-dialog__body--fName">
+            <label for="">Name : </label> {{ client.firstName }} {{ client.lastName }}
+          </p>
+          <p mat-list-item class="client-dialog__body--phNo">
+            <label for="">Phone : </label> {{ client.phoneNo }}
+          </p>
+          <p mat-list-item class="client-dialog__body--email">
+            <label for="">Email : </label> {{ client.email }}
+          </p>
+        </mat-nav-list>
+      </mat-card>
     </span>
     <span *ngIf="isNewClicked">
-        <!-- Please enter the details to add a new client. -->
-        <mat-card>
-            <mat-nav-list>
-              <p mat-list-item class="client-dialog__body--img">
-                <span>
-                  <mat-icon>camera_alt</mat-icon>
-                </span>
-                <!-- <img src="" alt="" srcset=""> -->
-              </p>
-              <p mat-list-item class="client-dialog__body--fName">
-                <!-- <label for="">First Name : </label>  -->
-                <mat-form-field appearance="outline">
-                  <mat-label>First Name</mat-label>
-                  <input matInput placeholder="Linga">
-                </mat-form-field>
-                <!-- <mat-form-field appearance="outline">
+      <!-- Please enter the details to add a new client. -->
+      <mat-card>
+        <mat-nav-list>
+          <p mat-list-item class="client-dialog__body--img">
+            <span>
+              <mat-icon>camera_alt</mat-icon>
+            </span>
+            <!-- <img src="" alt="" srcset=""> -->
+          </p>
+          <p mat-list-item class="client-dialog__body--fName">
+            <!-- <label for="">First Name : </label>  -->
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="Linga">
+            </mat-form-field>
+            <!-- <mat-form-field appearance="outline">
                   <mat-label>Last Name</mat-label>
                   <input matInput placeholder="Annela">
                 </mat-form-field> -->
-              </p>
-              
-              <p mat-list-item class="client-dialog__body--phNo">
-                <mat-form-field appearance="outline">
-                  <mat-label>Phone No</mat-label>
-                  <input matInput placeholder="203-970-9860">
-                </mat-form-field>
-                <!-- <mat-form-field appearance="outline">
+          </p>
+
+          <p mat-list-item class="client-dialog__body--phNo">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone No</mat-label>
+              <input matInput placeholder="203-970-9860">
+            </mat-form-field>
+            <!-- <mat-form-field appearance="outline">
                   <mat-label>Email</mat-label>
                   <input matInput placeholder="alreddy@ashta.in">
                 </mat-form-field> -->
-              </p>
-              
-            </mat-nav-list>
-        </mat-card>
+          </p>
+
+        </mat-nav-list>
+      </mat-card>
     </span>
     <span *ngIf="isEditClicked">
-        Please make the changes as required and submit.
+      Please make the changes as required and submit.
     </span>
     <span *ngIf="isDeleteClicked">
-        Are you sure, Want to delete this client?
+      Are you sure, Want to delete this client?
     </span>
   </div>
   <div class="client-dialog__footer">
@@ -91,10 +90,10 @@
     </span>
     <span class="client-dialog__footer--item-2" *ngIf="!isViewClicked">
       <button mat-raised-button color="warn" *ngIf="isDeleteClicked">
-          Yes, Delete
+        Yes, Delete
       </button>
       <button mat-raised-button color="primary" *ngIf="!isDeleteClicked">
-          Submit
+        Submit
       </button>
     </span>
   </div>

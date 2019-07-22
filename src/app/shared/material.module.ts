@@ -7,7 +7,7 @@ import { MatButtonModule,
   MatSidenavModule,
   MatCardModule,
   MatTabsModule,
-  MatExpansionModule, 
+  MatExpansionModule,
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule } from '@angular/material';

@@ -10,7 +10,7 @@ import { ManageclientDialogComponent } from './manageclient-dialog/manageclient-
 })
 
 export class ClientsComponent implements OnInit {
-  public clients : Client[];
+  public clients: Client[];
   public height: string;
   public width: string;
   public thisClient: Client;
@@ -20,12 +20,12 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
 
     this.clients = [
-      {id: "12345", firstName: "Linga", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
-      {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
-      {id: "12345", firstName: "Linga", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
-      {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
-      {id: "12345", firstName: "Linga", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" },
-      {id: "12345", firstName: "Sruthi", lastName: "Annela", email : "alreddy@ashta.com", phoneNo: "987-987-1230" }
+      { id: '12345', firstName: 'Linga', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
+      { id: '12345', firstName: 'Sruthi', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
+      { id: '12345', firstName: 'Linga', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
+      { id: '12345', firstName: 'Sruthi', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
+      { id: '12345', firstName: 'Linga', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
+      { id: '12345', firstName: 'Sruthi', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' }
     ];
 
   }
@@ -34,20 +34,19 @@ export class ClientsComponent implements OnInit {
     const dialogRef = this.dialog.open(ManageclientDialogComponent, {
       height: (height) ? height : '400px',
       width: (width) ? width : '600px',
-      data: {data, type}
+      data: { data, type }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      
     });
   }
 
-  onViewClient(data:Client) {
+  onViewClient(data: Client) {
     this.height = '450px';
     this.width = '600px';
     // Need to send the information as well.
-    let type = 'viewClicked';
+    const type = 'viewClicked';
     this.thisClient = data;
     this.openDialog(this.thisClient, type, this.height, this.width);
   }
@@ -56,26 +55,26 @@ export class ClientsComponent implements OnInit {
     this.height = '450px';
     this.width = '600px';
     // Need to send the information as well.
-    let type = 'newClicked';
+    const type = 'newClicked';
     this.openDialog(undefined, type, this.height, this.width);
   }
 
-  onEditClient(data:Client) {
+  onEditClient(data: Client) {
     this.height = '400px';
     this.width = '600px';
     // Need to send the information as well.
-    let type = 'editClicked';
+    const type = 'editClicked';
     this.thisClient = data;
     this.openDialog(this.thisClient, type, this.height, this.width);
   }
 
-  onDeleteClient(data:Client) {
+  onDeleteClient(data: Client) {
     this.height = '400px';
     this.width = '400px';
     // Need to send the information as well.
-    let type = 'deleteClicked';
+    const type = 'deleteClicked';
     this.thisClient = data;
     this.openDialog(this.thisClient, type, this.height, this.width);
   }
-
+  
 }

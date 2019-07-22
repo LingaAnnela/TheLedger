@@ -22,14 +22,13 @@ export class ManageclientDialogComponent implements OnInit {
 
   ngOnInit() {
     // Have to handle other cases
-    this.isEditClicked = (this.dialogData.type == 'editClicked') ? true : false;
-    this.isNewClicked = (this.dialogData.type == 'newClicked') ? true : false;
-    this.isDeleteClicked = (this.dialogData.type == 'deleteClicked') ? true : false; 
-    this.isViewClicked = (this.dialogData.type == 'viewClicked') ? true : false; 
+    this.isEditClicked = (this.dialogData.type === 'editClicked') ? true : false;
+    this.isNewClicked = (this.dialogData.type === 'newClicked') ? true : false;
+    this.isDeleteClicked = (this.dialogData.type === 'deleteClicked') ? true : false;
+    this.isViewClicked = (this.dialogData.type === 'viewClicked') ? true : false;
 
     this.client = this.dialogData.data;
-    console.log('this client : '+JSON.stringify(this.client));
-    
+    console.log('this client : ' + JSON.stringify(this.client));
   }
 
   onCancelDialog(): void {

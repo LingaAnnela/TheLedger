@@ -4,7 +4,7 @@
             Clients
         </span>
         <span class="page-title__new">
-            <button mat-raised-button color="warn" (click)="onAddClient()" >
+            <button mat-raised-button color="warn" (click)="onAddClient()">
                 <span>
                     <mat-icon>add_circle</mat-icon>
                     NEW
@@ -31,7 +31,8 @@
                 </span>
             </span>
             <span class="client-card__item-3">
-                <button mat-stroked-button style="color : green" (click)="onEditClient(client); $event.stopPropagation()">
+                <button mat-stroked-button style="color : green"
+                    (click)="onEditClient(client); $event.stopPropagation()">
                     <span>
                         <mat-icon>edit</mat-icon>
                         <span class="desktop-view">
@@ -53,4 +54,3 @@
         </mat-card>
     </div>
 </section>
-
