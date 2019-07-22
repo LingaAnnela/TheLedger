@@ -26,6 +26,9 @@ export class ManageclientDialogComponent implements OnInit {
     this.isNewClicked = (this.dialogData.type == 'newClicked') ? true : false;
     this.isDeleteClicked = (this.dialogData.type == 'deleteClicked') ? true : false; 
     this.isViewClicked = (this.dialogData.type == 'viewClicked') ? true : false; 
+
+    this.client = this.dialogData.data;
+    console.log('this client : '+JSON.stringify(this.client));
     
   }
 
