@@ -44,7 +44,7 @@ export class ClientsComponent implements OnInit {
   }
 
   onViewClient(data:Client) {
-    this.height = '400px';
+    this.height = '450px';
     this.width = '600px';
     // Need to send the information as well.
     let type = 'viewClicked';
@@ -53,7 +53,7 @@ export class ClientsComponent implements OnInit {
   }
 
   onAddClient() {
-    this.height = '400px';
+    this.height = '450px';
     this.width = '600px';
     // Need to send the information as well.
     let type = 'newClicked';

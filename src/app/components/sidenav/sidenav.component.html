@@ -11,26 +11,43 @@
   
   <a mat-list-item href="" class="sidenav-list__item--home" *ngIf="!isAuth" routerLink="/" (click)="onClose()">
     <mat-icon>dashboard</mat-icon>
-    <span class="nav-caption">Dashboard</span>
+    <span class="nav-caption">
+      <label for="">Dashboard</label>
+    </span>
   </a>
   
   <a mat-list-item href="" class="sidenav-list__item--clients" *ngIf="!isAuth" routerLink="/clients" (click)="onClose()">
     <mat-icon>group_add</mat-icon>
-    <span class="nav-caption">Clients</span>
+    <span class="nav-caption">
+        <label for="">Clients</label>
+      </span>
   </a>
-  
+
+  <a mat-list-item href="" class="sidenav-list__item--login" *ngIf="!isAuth" routerLink="/auditbook" (click)="onClose()">
+    <mat-icon>collections_bookmark </mat-icon>
+    <span class="nav-caption">
+        <label for="">AuditBook</label>
+    </span>
+  </a>
+
   <a mat-list-item href="" class="sidenav-list__item--login" *ngIf="!isAuth" routerLink="/chitfunds" (click)="onClose()">
     <mat-icon>library_books</mat-icon>
-    <span class="nav-caption">Chitfund</span>
+    <span class="nav-caption">
+        <label for="">Chitfund</label>
+    </span>
   </a>
 
   <a mat-list-item href="" class="sidenav-list__item--login" *ngIf="!isAuth" routerLink="/auth/login" (click)="onClose()">
     <mat-icon>input</mat-icon>
-    <span class="nav-caption">Login</span>
+    <span class="nav-caption">
+        <label for="">Login</label> 
+    </span>
   </a>
 
   <a mat-list-item href="" class="sidenav-list__item--signup" *ngIf="!isAuth" routerLink="/auth/signup" (click)="onClose()">
     <mat-icon>person_add</mat-icon>
-    <span class="nav-caption">Signup</span>
+    <span class="nav-caption">
+      <label for="">Signup</label>
+    </span>
   </a>
 </mat-nav-list>
