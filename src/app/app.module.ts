@@ -13,12 +13,15 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ManageclientDialogComponent } from './components/clients/manageclient-dialog/manageclient-dialog.component';
+import { AuditbookComponent } from './components/auditbook/auditbook.component';
+import { ChitfundsComponent } from './components/chitfunds/chitfunds.component';
 
 const appRoutes: Routes = [
-  { path: '', component: ClientsComponent},
-  { path: '**', component: ClientsComponent},
+  { path: '', component: ClientsComponent },
+  { path: 'clients', component: ClientsComponent},
+  { path: 'auditbook', component: AuditbookComponent},
+  { path: 'chitfunds', component: ChitfundsComponent},
   { path: '**', component: DashboardComponent }
-
 ] ;
 
 @NgModule({
@@ -28,7 +31,9 @@ const appRoutes: Routes = [
     SidenavComponent,
     TopnavComponent,
     ClientsComponent,
-    ManageclientDialogComponent
+    ManageclientDialogComponent,
+    AuditbookComponent,
+    ChitfundsComponent
   ],
   imports: [
     BrowserModule,

@@ -2,8 +2,13 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import './scss/vars';
 
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config($font-family: '"Montserrat", sans-serif');
+@include mat-core($custom-typography);
+
 html, body{
-  font-family: 'Roboto', 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   height: 100%;
 }
 

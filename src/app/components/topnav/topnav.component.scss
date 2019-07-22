@@ -14,4 +14,23 @@ mat-toolbar{
   padding-left: 6px;
 }
 
+.nav-toolbar {
+  display: flex;
+}
+
+.nav-toolbar__menu {
+  flex: 1;
+}
+
+.nav-toolbar__title {
+  flex: 6;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.nav-toolbar__logo {
+  flex: 1;
+}
+
 
