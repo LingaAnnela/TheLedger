@@ -18,11 +18,11 @@ import { ChitfundsComponent } from './components/chitfunds/chitfunds.component';
 
 const appRoutes: Routes = [
   { path: '', component: ClientsComponent },
-  { path: 'clients', component: ClientsComponent},
-  { path: 'auditbook', component: AuditbookComponent},
-  { path: 'chitfunds', component: ChitfundsComponent},
+  { path: 'clients', component: ClientsComponent },
+  { path: 'auditbook', component: AuditbookComponent },
+  { path: 'chitfunds', component: ChitfundsComponent },
   { path: '**', component: DashboardComponent }
-] ;
+];
 
 @NgModule({
   declarations: [
