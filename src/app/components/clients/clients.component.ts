@@ -52,7 +52,7 @@ export class ClientsComponent implements OnInit {
   }
 
   onAddClient() {
-    this.height = '450px';
+    this.height = '570px';
     this.width = '600px';
     // Need to send the information as well.
     const type = 'newClicked';
@@ -60,7 +60,7 @@ export class ClientsComponent implements OnInit {
   }
 
   onEditClient(data: Client) {
-    this.height = '400px';
+    this.height = '570px';
     this.width = '600px';
     // Need to send the information as well.
     const type = 'editClicked';
@@ -69,7 +69,7 @@ export class ClientsComponent implements OnInit {
   }
 
   onDeleteClient(data: Client) {
-    this.height = '400px';
+    this.height = '450px';
     this.width = '400px';
     // Need to send the information as well.
     const type = 'deleteClicked';
