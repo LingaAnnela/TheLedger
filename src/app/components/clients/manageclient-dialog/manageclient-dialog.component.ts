@@ -21,6 +21,7 @@ export class ManageclientDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dialogData) { }
 
   ngOnInit() {
+    
     // Have to handle other cases
     this.isEditClicked = (this.dialogData.type === 'editClicked') ? true : false;
     this.isNewClicked = (this.dialogData.type === 'newClicked') ? true : false;
