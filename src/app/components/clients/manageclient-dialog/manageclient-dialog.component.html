@@ -34,6 +34,7 @@
         </mat-nav-list>
       </mat-card>
     </span>
+
     <span *ngIf="isNewClicked">
       <!-- Please enter the details to add a new client. -->
       <mat-card>
@@ -44,39 +45,75 @@
             </span>
             <!-- <img src="" alt="" srcset=""> -->
           </p>
-          <p mat-list-item class="client-dialog__body--fName">
+          <p mat-list-item class="client-dialog__body--fName desktop__mobile">
             <!-- <label for="">First Name : </label>  -->
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
               <input matInput placeholder="Linga">
             </mat-form-field>
-            <!-- <mat-form-field appearance="outline">
-                  <mat-label>Last Name</mat-label>
-                  <input matInput placeholder="Annela">
-                </mat-form-field> -->
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Annela">
+            </mat-form-field>
           </p>
 
-          <p mat-list-item class="client-dialog__body--phNo">
+          <p mat-list-item class="client-dialog__body--phNo desktop__mobile">
             <mat-form-field appearance="outline">
               <mat-label>Phone No</mat-label>
               <input matInput placeholder="203-970-9860">
             </mat-form-field>
-            <!-- <mat-form-field appearance="outline">
-                  <mat-label>Email</mat-label>
-                  <input matInput placeholder="alreddy@ashta.in">
-                </mat-form-field> -->
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="alreddy@ashta.in">
+            </mat-form-field>
           </p>
 
         </mat-nav-list>
       </mat-card>
     </span>
+
     <span *ngIf="isEditClicked">
-      Please make the changes as required and submit.
+      <mat-card>
+        <mat-nav-list>
+          <span mat-list-item class="client-dialog__body--img">
+            <span>
+              <mat-icon>camera_alt</mat-icon>
+            </span>
+            <!-- <img src="" alt="" srcset=""> -->
+          </span>
+          <span mat-list-item class="client-dialog__body--fName desktop__mobile">
+            <!-- <label for="">First Name : </label>  -->
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="Linga" [(ngModel)]="client.firstName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Annela" [(ngModel)]="client.lastName">
+            </mat-form-field>
+          </span>
+
+          <span mat-list-item class="client-dialog__body--phNo desktop__mobile">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone No</mat-label>
+              <input matInput placeholder="203-970-9860" [(ngModel)]="client.phoneNo">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="alreddy@ashta.in" [(ngModel)]="client.email">
+            </mat-form-field>
+          </span>
+
+        </mat-nav-list>
+      </mat-card>
     </span>
+
     <span *ngIf="isDeleteClicked">
       Are you sure, Want to delete this client?
     </span>
+
   </div>
+
   <div class="client-dialog__footer">
     <span class="client-dialog__footer--item-1">
       <button mat-stroked-button color="warn" (click)=onCancelDialog()>
