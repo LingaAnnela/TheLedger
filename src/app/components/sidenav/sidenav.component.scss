@@ -23,19 +23,43 @@ a {
   display: flex;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: $red_color;
+  background-color: lighten(map-get($colors, red_color), 15%);
+  /* &__img-sec{
+      height: 50px;
+      width: 50px;
+      justify-content: center;
+      align-content: center;
+    }
 
-  &__img-sec{
-    justify-content: center;
-    align-content: center;
-  }
+    &__det-sec{
+      justify-content: center;
+      align-content: center;
+      color: $white_color;
+    }  */
+}
 
-  &__det-sec{
-    justify-content: center;
-    align-content: center;
-    color: $white_color;
+.client-profile__img-sec {
+  flex: 1;
+  margin-left: 10px;
+  img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
   }
 }
+
+.client-profile__det-sec {
+  flex: 1;
+  color: white;
+}
+
+.client-profile__img-sec {
+  height: 50px;
+  width: 50px;
+}
+
+
+
 
 .client-detail__img {
   height: 80px;

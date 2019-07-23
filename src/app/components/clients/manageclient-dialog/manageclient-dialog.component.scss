@@ -1,8 +1,17 @@
 @import '../../../../scss/vars';
+@import '../../../../scss/mixins';
 
 @function color($color){
     @return map-get($colors , $color);
 }
+
+.desktop__view{
+    min-width: 200px;
+    width: 400px;
+    display: flex;
+
+  }
+  
 
 .flex-center {
     display: flex;
@@ -11,7 +20,7 @@
 }
 
 mat-card {
-    padding: 0px;
+    padding: 2px;
     // padding-bottom: 10px;
     margin-bottom: 5px; 
 
@@ -25,7 +34,8 @@ label {
 .client-dialog {
     display: flex;
     flex-direction: column;
-    height: 400px;
+    max-height: 400px;
+    min-height: 150px;
 }
 
 .client-dialog__header {

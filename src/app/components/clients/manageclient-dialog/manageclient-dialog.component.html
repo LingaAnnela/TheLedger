@@ -7,6 +7,8 @@
       Add Client
     </span>
     <span *ngIf="isEditClicked" class="client-dialog__header--title">
+      <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset=""
+        style="height: 40px; width: 40px; border-radius: 50%">
       Edit Client
     </span>
     <span *ngIf="isDeleteClicked" class="client-dialog__header--title">
@@ -15,103 +17,21 @@
   </div>
 
   <div class="client-dialog__body">
-    <span *ngIf="isViewClicked">
-      <!-- Currently, you are viewing the client details. -->
-      <mat-card>
-        <mat-nav-list>
-          <p mat-list-item class="client-dialog__body--img">
-            <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="">
-          </p>
-          <p mat-list-item class="client-dialog__body--fName">
-            <label for="">Name : </label> {{ client.firstName }} {{ client.lastName }}
-          </p>
-          <p mat-list-item class="client-dialog__body--phNo">
-            <label for="">Phone : </label> {{ client.phoneNo }}
-          </p>
-          <p mat-list-item class="client-dialog__body--email">
-            <label for="">Email : </label> {{ client.email }}
-          </p>
-        </mat-nav-list>
-      </mat-card>
-    </span>
+    <ng-container *ngIf="isViewClicked">
+      <ng-container *ngTemplateOutlet="viewClient;context:{ $implicit: client }"> </ng-container>
+    </ng-container>
 
-    <span *ngIf="isNewClicked">
-      <!-- Please enter the details to add a new client. -->
-      <mat-card>
-        <mat-nav-list>
-          <p mat-list-item class="client-dialog__body--img">
-            <span>
-              <mat-icon>camera_alt</mat-icon>
-            </span>
-            <!-- <img src="" alt="" srcset=""> -->
-          </p>
-          <p mat-list-item class="client-dialog__body--fName desktop__mobile">
-            <!-- <label for="">First Name : </label>  -->
-            <mat-form-field appearance="outline">
-              <mat-label>First Name</mat-label>
-              <input matInput placeholder="Linga">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Last Name</mat-label>
-              <input matInput placeholder="Annela">
-            </mat-form-field>
-          </p>
+    <ng-container *ngIf="isNewClicked">
+      <ng-container *ngTemplateOutlet="newClient;context:{ $implicit: client }"> </ng-container>
+    </ng-container>
 
-          <p mat-list-item class="client-dialog__body--phNo desktop__mobile">
-            <mat-form-field appearance="outline">
-              <mat-label>Phone No</mat-label>
-              <input matInput placeholder="203-970-9860">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="alreddy@ashta.in">
-            </mat-form-field>
-          </p>
+    <ng-container *ngIf="isEditClicked">
+      <ng-container *ngTemplateOutlet="editClient;context:{ $implicit: client }"> </ng-container>
+    </ng-container>
 
-        </mat-nav-list>
-      </mat-card>
-    </span>
-
-    <span *ngIf="isEditClicked">
-      <mat-card>
-        <mat-nav-list>
-          <span mat-list-item class="client-dialog__body--img">
-            <span>
-              <mat-icon>camera_alt</mat-icon>
-            </span>
-            <!-- <img src="" alt="" srcset=""> -->
-          </span>
-          <span mat-list-item class="client-dialog__body--fName desktop__mobile">
-            <!-- <label for="">First Name : </label>  -->
-            <mat-form-field appearance="outline">
-              <mat-label>First Name</mat-label>
-              <input matInput placeholder="Linga" [(ngModel)]="client.firstName">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Last Name</mat-label>
-              <input matInput placeholder="Annela" [(ngModel)]="client.lastName">
-            </mat-form-field>
-          </span>
-
-          <span mat-list-item class="client-dialog__body--phNo desktop__mobile">
-            <mat-form-field appearance="outline">
-              <mat-label>Phone No</mat-label>
-              <input matInput placeholder="203-970-9860" [(ngModel)]="client.phoneNo">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="alreddy@ashta.in" [(ngModel)]="client.email">
-            </mat-form-field>
-          </span>
-
-        </mat-nav-list>
-      </mat-card>
-    </span>
-
-    <span *ngIf="isDeleteClicked">
-      Are you sure, Want to delete this client?
-    </span>
-
+    <ng-container *ngIf="isDeleteClicked">
+      <ng-container *ngTemplateOutlet="deleteClient;context:{ $implicit: client }"> </ng-container>
+    </ng-container>
   </div>
 
   <div class="client-dialog__footer">
@@ -135,3 +55,100 @@
     </span>
   </div>
 </section>
+
+<!-- 
+<ng-container></ng-container> Is used to hold the reference for template/structural directive with out creating the element in the DOM.
+<ng-template></ng-template> Is used to hold the actual content to be displayed based on the condition provided in the container. 
+-->
+<ng-template #viewClient let-client>
+  <mat-card>
+    <mat-nav-list>
+      <p mat-list-item class="client-dialog__body--img">
+        <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="">
+      </p>
+      <p mat-list-item class="client-dialog__body--fName">
+        <label for="">Name : </label> {{ client.firstName }} {{ client.lastName }}
+      </p>
+      <p mat-list-item class="client-dialog__body--phNo">
+        <label for="">Phone : </label> {{ client.phoneNo }}
+      </p>
+      <p mat-list-item class="client-dialog__body--email">
+        <label for="">Email : </label> {{ client.email }}
+      </p>
+    </mat-nav-list>
+  </mat-card>
+</ng-template>
+
+<ng-template #newClient let-client>
+  <mat-card>
+    <mat-nav-list>
+      <p mat-list-item class="client-dialog__body--img">
+        <span>
+          <mat-icon>camera_alt</mat-icon>
+        </span>
+        <!-- <img src="" alt="" srcset=""> -->
+      </p>
+      <p mat-list-item class="client-dialog__body--fName desktop__mobile">
+        <!-- <label for="">First Name : </label>  -->
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Linga">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Annela">
+        </mat-form-field>
+      </p>
+
+      <p mat-list-item class="client-dialog__body--phNo desktop__mobile">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone No</mat-label>
+          <input matInput placeholder="203-970-9860">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="alreddy@ashta.in">
+        </mat-form-field>
+      </p>
+
+    </mat-nav-list>
+  </mat-card>
+</ng-template>
+
+<ng-template #editClient let-client>
+  <mat-card>
+    <mat-nav-list>
+      <span mat-list-item class="client-dialog__body--img">
+        <!-- <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="" style="height: 35px; width: 35px"> -->
+        <!-- <img src="" alt="" srcset=""> -->
+      </span>
+      <span mat-list-item class="client-dialog__body--fName desktop__mobile">
+        <!-- <label for="">First Name : </label>  -->
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Linga" [(ngModel)]="client.firstName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Annela" [(ngModel)]="client.lastName">
+        </mat-form-field>
+      </span>
+
+      <span mat-list-item class="client-dialog__body--phNo desktop__mobile">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone No</mat-label>
+          <input matInput placeholder="203-970-9860" [(ngModel)]="client.phoneNo">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="alreddy@ashta.in" [(ngModel)]="client.email">
+        </mat-form-field>
+      </span>
+
+    </mat-nav-list>
+  </mat-card>
+</ng-template>
+
+<ng-template #deleteClient let-client>
+  Are you sure? Want to remove {{ client.firstName }} {{ client.lastName }} !
+</ng-template>
