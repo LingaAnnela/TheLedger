@@ -17,6 +17,10 @@ export class ClientsComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
+  ngOnChanges() {
+    console.log('ngOnChanges');
+  }
+
   ngOnInit() {
 
     this.clients = [
@@ -25,7 +29,7 @@ export class ClientsComponent implements OnInit {
       { id: '12345', firstName: 'Linga', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
       { id: '12345', firstName: 'Sruthi', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
       { id: '12345', firstName: 'Linga', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
-      { id: '12345', firstName: 'Sruthi', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' }
+      { id: '12345', firstName: 'Sruthi', lastName: 'Annela', email: 'alreddyashta.com', phoneNo: '987-987-1230' }
     ];
 
   }
@@ -37,9 +41,17 @@ export class ClientsComponent implements OnInit {
       data: { data, type }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    // const sub = dialogRef.componentInstance.clientDetails.subscribe((res) => {
+    //   console.log('The dialog was closed emitted value : '+res);
+    // });
+    dialogRef.afterClosed().subscribe((res) => {
+      //sub.unsubscribe();
+      console.log('The dialog was closed : ' + res);
     });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed : '+result);
+    // });
   }
 
   onViewClient(data: Client) {
@@ -76,5 +88,5 @@ export class ClientsComponent implements OnInit {
     this.thisClient = data;
     this.openDialog(this.thisClient, type, this.height, this.width);
   }
-  
+
 }
