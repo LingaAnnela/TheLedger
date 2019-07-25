@@ -165,7 +165,7 @@
 
     <div class="client-dialog__footer">
       <span class="client-dialog__footer--item-1">
-        <button mat-stroked-button color="warn" (click)=onCancelDialog()>
+        <button mat-stroked-button color="warn" type="button" (click)=onCancelDialog()>
           Cancel
         </button>
       </span>
@@ -196,7 +196,7 @@
       </button>
     </span>
     <span class="client-dialog__footer--item-2" *ngIf="!isViewClicked">
-      <button mat-raised-button color="warn" *ngIf="isDeleteClicked">
+      <button mat-raised-button color="warn" *ngIf="isDeleteClicked" (click)="onSubmit()">
         Yes, Delete
       </button>
       <button mat-raised-button color="primary" *ngIf="!isDeleteClicked">
