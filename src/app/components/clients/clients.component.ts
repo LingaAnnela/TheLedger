@@ -79,7 +79,9 @@ export class ClientsComponent implements OnInit {
   saveClient(res) {
     let id = 1;
     if(this.clients) {
-      id = this.clients[this.clients.length - 1].id;
+      if(this.clients.length != 0) {
+        id = this.clients[this.clients.length - 1].id;
+      }
       let newClient = {
         'id' : id+1,
         'firstName' : res.value.clientName.firstName,

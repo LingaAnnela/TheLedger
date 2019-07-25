@@ -135,13 +135,13 @@
             <input matInput formControlName="firstName">
           </mat-form-field>
           <!-- If you are using the nested controls in the form group then, you should access using the groupName.firstName. -->
-          <span *ngIf="!editForm.get('firstName').valid && editForm.get('firstName').touched">firstName is
-            Invalid</span>
+          <!-- <span *ngIf="!editForm.get('firstName').valid && editForm.get('firstName').touched">firstName is Invalid</span> -->
+
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
             <input matInput formControlName="lastName">
           </mat-form-field>
-          <span *ngIf="!editForm.get('lastName').valid && editForm.get('lastName').touched">lastName is Invalid</span>
+          <!-- <span *ngIf="!editForm.get('lastName').valid && editForm.get('lastName').touched">lastName is Invalid</span> -->
 
         </span>
 
@@ -150,14 +150,14 @@
             <mat-label>Phone No</mat-label>
             <input matInput formControlName="phoneNo">
           </mat-form-field>
-          <span *ngIf="!editForm.get('phoneNo').valid && editForm.get('phoneNo').touched">phoneNo is Invalid</span>
+          <!-- <span *ngIf="!editForm.get('phoneNo').valid && editForm.get('phoneNo').touched">phoneNo is Invalid</span> -->
 
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email">
           </mat-form-field>
 
-          <span *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Email is Invalid</span>
+          <!-- <span *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Email is Invalid</span> -->
 
         </span>
       </mat-nav-list>
