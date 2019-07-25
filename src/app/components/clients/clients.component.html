@@ -12,7 +12,7 @@
             </button>
         </span>
     </div>
-    <div *ngFor="let client of clients">
+    <div *ngFor="let client of clients; let index = index">
         <mat-card class="client-card" (click)="onViewClient(client)">
             <span class="client-card__item-1">
                 <span *ngIf="client.firstName == 'Linga'">
@@ -32,7 +32,7 @@
             </span>
             <span class="client-card__item-3">
                 <button mat-stroked-button style="color : green"
-                    (click)="onEditClient(client); $event.stopPropagation()">
+                    (click)="onEditClient(client, index); $event.stopPropagation()">
                     <span>
                         <mat-icon>edit</mat-icon>
                         <span class="desktop-view">
@@ -42,7 +42,7 @@
                 </button>
             </span>
             <span class="client-card__item-4">
-                <button mat-stroked-button color="warn" (click)="onDeleteClient(client); $event.stopPropagation()">
+                <button mat-stroked-button color="warn" (click)="onDeleteClient(client, index); $event.stopPropagation()">
                     <span>
                         <mat-icon>delete_forever</mat-icon>
                         <span class="desktop-view">

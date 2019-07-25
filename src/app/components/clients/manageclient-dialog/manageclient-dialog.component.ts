@@ -46,13 +46,16 @@ export class ManageclientDialogComponent implements OnInit {
     this.clientData = this.dialogData.data;
     console.log('this client : ' + JSON.stringify(this.clientData));
 
-    this.editForm = new FormGroup({
-      // if using nested controls, then use form group inside of this fromgroup.
-      'firstName': new FormControl(this.clientData.firstName, Validators.required),
-      'lastName': new FormControl(this.clientData.lastName, Validators.required),
-      'phoneNo': new FormControl(this.clientData.phoneNo, Validators.required),
-      'email': new FormControl(this.clientData.email, [Validators.required, Validators.email])
-    });
+    if(this.isEditClicked){
+      this.editForm = new FormGroup({
+        // if using nested controls, then use form group inside of this fromgroup.
+        'id': new FormControl(this.clientData.id, Validators.required),
+        'firstName': new FormControl(this.clientData.firstName, Validators.required),
+        'lastName': new FormControl(this.clientData.lastName, Validators.required),
+        'phoneNo': new FormControl(this.clientData.phoneNo, Validators.required),
+        'email': new FormControl(this.clientData.email, [Validators.required, Validators.email])
+      });
+    }
   }
   /*
   onSubmit(form: NgForm) {
@@ -68,12 +71,18 @@ export class ManageclientDialogComponent implements OnInit {
 
   onSubmit() {
     console.log('Client : ' + this.clientForm);
-    if (!this.clientForm.valid) {
-      console.error('The form is invalid');
+    
+    if(this.isDeleteClicked) {
+      this.dialogRef.close(this.clientData);
     } else {
-      this.dialogRef.close(this.clientForm);
-      // this.clientDetails.emit(this.clientForm.value);
+      if (!this.clientForm.valid) {
+        console.error('The form is invalid');
+      } else {
+        this.dialogRef.close(this.clientForm);
+        // this.clientDetails.emit(this.clientForm.value);
+      }
     }
+
   }
 
   onEditAndSubmit() {
