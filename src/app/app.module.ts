@@ -4,6 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
+import { MenuItem } from 'primeng/api';                 //api
+import { ChartModule } from '../../node_modules/primeng/chart';
 
 
 import { AppComponent } from './app.component';
@@ -42,7 +45,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(appRoutes),
-    FlexLayoutModule
+    FlexLayoutModule,
+    AccordionModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent],
