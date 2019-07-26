@@ -1,1 +1,44 @@
-<p>auditbook works!</p>
+<section class="all-transactions">
+    <div class="page-title">
+        <span class="page-title__display">
+            AuditBook
+        </span>
+    </div>
+    <mat-card class="audit-card">
+        <span class="audit-card__title">
+            ALL TRANSACTIONS
+        </span>
+        <mat-card-content>
+            <p-chart type="pie" [data]="data"></p-chart>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-stroked-button color="warn">VIEW DETAILS</button>
+        </mat-card-actions>
+    </mat-card>
+</section>
+
+<section class="ind-transactions">
+    <mat-card class="audit-card">
+        <mat-card-header class="audit-card__title">
+            DEBT
+        </mat-card-header>
+        <mat-card-content>
+            <p-chart type="pie" [data]="data"></p-chart>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-stroked-button color="warn">VIEW DETAILS</button>
+          </mat-card-actions>
+    </mat-card>
+    
+    <mat-card class="audit-card">
+        <mat-card-header class="audit-card__title">
+            CREDIT
+        </mat-card-header>
+        <mat-card-content>
+            <p-chart type="pie" [data]="data"></p-chart>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-stroked-button color="warn">VIEW DETAILS</button>
+          </mat-card-actions>
+    </mat-card>
+</section>
