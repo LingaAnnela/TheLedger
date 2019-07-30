@@ -1,3 +1,136 @@
-<p>
-  dashboard works!
-</p>
+
+
+<form [formGroup]="clinicalSearchForm" (ngSubmit)="onSubmit()">
+  <button>
+    submit
+  </button>
+  <div class="patient-details__formArr" formArrayName="patientDetailsArr" *ngFor="let patDetails of clinicalSearchForm.get('patientDetailsArr').controls; let i=index">
+    <div class="patient-details-group" [formGroupName]="i">
+      <input 
+        type="text" 
+        matInput
+        formControlName="andOr"
+      >
+      <input 
+        type="number" 
+        matInput
+        formControlName="minAge"
+      >
+      <input 
+        type="number" 
+        matInput
+        formControlName="maxAge"
+        (blur)="validateMaxAge(i)"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="gender"
+      >
+      <span *ngIf="
+        (clinicalSearchForm.get('patientDetailsArr').value[i].minAge > clinicalSearchForm.get('patientDetailsArr').value[i].maxAge)
+        
+        ">
+        Invalid
+      </span>
+      <span>
+        <button type="button" (click)="onAddPatientDettails()">ADD</button>
+        <button type="button" (click)="onRemovePatientDettails(i)">REMOVE</button>
+      </span>
+
+    </div>
+  </div>
+
+
+  <div class="patient-details__lab-test">
+    <input 
+      type="text" 
+      matInput
+      formControlName="labTestAndOricdCode"
+    >
+  </div>
+
+  <div class="lab-test__formArr" formArrayName="labTestArr" *ngFor="let patDetails of clinicalSearchForm.get('labTestArr').controls; let i=index">
+    <div class="lab-test-group" [formGroupName]="i">
+      <input 
+        type="text" 
+        matInput
+        formControlName="andOr"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="labTestLookup"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="condition"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="value"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="units"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="fasting"
+      >
+      <span>
+        <button type="button" (click)="onAddLabTest()">ADD</button>
+        <button type="button" (click)="onRemoveLabTest(i)">REMOVE</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="lab-test__icd-code">
+      <input 
+      type="text" 
+      matInput
+      formControlName="patientAndOrLabTest"
+    >
+  </div>
+
+  <div class="icd-code__formArr" formArrayName="icdCodeArr" *ngFor="let patDetails of clinicalSearchForm.get('icdCodeArr').controls; let i=index">
+    <div class="patient-details-group" [formGroupName]="i">
+        <input 
+        type="text" 
+        matInput
+        formControlName="andOr"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="condition"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="icdCodePartI"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="icdCodePartII"
+      >
+      <input 
+        type="text" 
+        matInput
+        formControlName="icdCodeSet"
+      >
+      <span>
+        <button type="button" (click)="onAddIcdCode()">ADD</button>
+        <button type="button" (click)="onRemoveIcdCode(i)">REMOVE</button>
+      </span>
+      
+    </div>
+
+  </div>
+
+</form>
