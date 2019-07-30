@@ -1,12 +1,14 @@
+import { Payment } from './payment.model';
+
 export interface Transaction {
    id?: string;
    name: string;
    amount: number;
    date: Date;
-   interest?: number;
+   interest: number;
    notification: boolean;
-   interval?: number;
-   duration?: string;
-   attachments?: string;
-   payments: any[];
+   interval: number;
+   duration: string;
+   attachments: string;
+   payments: Payment[];
 }

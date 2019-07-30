@@ -18,9 +18,11 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { ManageclientDialogComponent } from './components/clients/manageclient-dialog/manageclient-dialog.component';
 import { AuditbookComponent } from './components/auditbook/auditbook.component';
 import { ChitfundsComponent } from './components/chitfunds/chitfunds.component';
+import { InputTextModule } from 'node_modules/primeng/components/inputtext/inputtext';
+
 
 const appRoutes: Routes = [
-  { path: '', component: ClientsComponent },
+  { path: '', component: AuditbookComponent },
   { path: 'clients', component: ClientsComponent },
   { path: 'auditbook', component: AuditbookComponent },
   { path: 'chitfunds', component: ChitfundsComponent },
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlexLayoutModule,
     AccordionModule,
-    ChartModule
+    ChartModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent],
