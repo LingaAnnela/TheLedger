@@ -1,6 +1,48 @@
 
 
-<form [formGroup]="clinicalSearchForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="criteriaForm" (ngSubmit)="onCriteriaSubmit()">
+  <button>
+    submit
+  </button>
+  <div class="patient-details__formArr" formArrayName="criteriaArr" *ngFor="let criteria of criteriaForm.get('criteriaArr').controls; let index=index">
+    <div class="patient-details-group" [formGroupName]="index">
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type">
+      </mat-form-field>
+
+      <mat-form-field>
+          <mat-label>SubType</mat-label>
+          <mat-select formControlName="subType" name="subType" (selectionChange)="onSubTypeChange($event, index)">
+            <mat-option *ngFor="let subType of subTypes" [value]="subType.viewValue">
+              {{subType.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- <div class="patient-details-group" formGroupName="subGroup">
+          <app-age [criteriaForm] = "criteriaForm" ></app-age>
+
+        </div> -->
+        <!-- <ng-container *ngTemplateOutlet="otherComp; context: ctx"></ng-container> -->
+
+    </div>
+  </div>
+  
+</form>
+
+
+<ng-template #otherComp let-subType = 'subType'>
+  <p> subType : {{ subType }}</p>
+
+    <app-age *ngIf="subType == 'Age'" [criteriaForm] = "criteriaForm" ></app-age>
+    <app-radius *ngIf="subType == 'Radius'"></app-radius>
+
+</ng-template>
+
+<hr>
+
+<!-- <form [formGroup]="clinicalSearchForm" (ngSubmit)="onSubmit()">
   <button>
     submit
   </button>
@@ -133,4 +175,4 @@
 
   </div>
 
-</form>
+</form> -->

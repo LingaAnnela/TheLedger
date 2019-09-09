@@ -1,1 +1,57 @@
-<p>chitfunds works!</p>
+<form [formGroup]="criteriaForm" (ngSubmit)="onCriteriaSubmit()">
+    
+    <!-- <div class="patient-details__formArr" formArrayName="criteriaArr" *ngFor="let criteria of criteriaForm.get('criteriaArr').controls; let index=index">
+      
+
+      <div class="patient-details-group" [formGroupName]="index">
+        <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+          <input matInput formControlName="type">
+        </mat-form-field>
+  
+        <mat-form-field>
+            <mat-label>SubType</mat-label>
+            <mat-select formControlName="subType" name="subType" (selectionChange)="onSubTypeChange($event, index)">
+              <mat-option *ngFor="let subType of subTypes" [value]="subType.viewValue">
+                {{subType.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <button mat-stroked-button color="accent">SUBMIT</button>
+  
+          <app-age [criteriaForm] = "newCriteriaForm" ></app-age>
+          <ng-container *ngTemplateOutlet="otherComp; context: ctx"></ng-container>
+  
+      </div>
+    </div> -->
+    
+  </form>
+
+
+  <!-- <div class="mat-typography">
+        <h1>Checkout Order</h1>
+      
+        <div class="checkout-form">
+          <form novalidate [formGroup]="checkoutForm">
+            
+            <mat-form-field>
+              <input matInput type="text" placeholder='Full name' formControlName="fullName">
+            </mat-form-field>
+      
+            <mat-tab-group>
+              <mat-tab label="Billing" style="background:yellow">
+                <app-age (formReady)="formInitialized('billing', $event)"></app-age>
+              </mat-tab>
+              <mat-tab label="Shipping">
+                <app-radius (formReady)="formInitialized('shipping', $event)"></app-radius>
+              </mat-tab>
+            </mat-tab-group>
+          </form>
+        </div>
+      
+      <h2 class='mat-h2'>Form Value</h2>
+        <pre>
+          {{checkoutForm.value | json}}
+        </pre>
+      </div> -->

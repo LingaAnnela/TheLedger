@@ -19,10 +19,15 @@ import { ManageclientDialogComponent } from './components/clients/manageclient-d
 import { AuditbookComponent } from './components/auditbook/auditbook.component';
 import { ChitfundsComponent } from './components/chitfunds/chitfunds.component';
 import { InputTextModule } from 'node_modules/primeng/components/inputtext/inputtext';
+import { AgeComponent } from './components/dashboard/age/age.component';
+import { RadiusComponent } from './components/dashboard/radius/radius.component';
+import { ParentComponent } from './components/parent/parent.component';
+import { ChildComponent } from './components/parent/child/child.component';
+import { SecondComponent } from './components/parent/second/second.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: AuditbookComponent },
+  { path: '', component: ParentComponent },
   { path: 'clients', component: ClientsComponent },
   { path: 'auditbook', component: AuditbookComponent },
   { path: 'chitfunds', component: ChitfundsComponent },
@@ -38,7 +43,12 @@ const appRoutes: Routes = [
     ClientsComponent,
     ManageclientDialogComponent,
     AuditbookComponent,
-    ChitfundsComponent
+    ChitfundsComponent,
+    AgeComponent,
+    RadiusComponent,
+    ParentComponent,
+    ChildComponent,
+    SecondComponent
   ],
   imports: [
     BrowserModule,
