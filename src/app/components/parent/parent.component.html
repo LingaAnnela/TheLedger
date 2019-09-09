@@ -1,0 +1,50 @@
+<div>
+    <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+            <div formArrayName="criteriaArr">
+                <div *ngFor="let item of criteriaArr; let index = index;">
+                    <div fxLayout='row' [formGroupName]="index">
+                        <mat-form-field appearance="outline" fxFlex="15">
+                            <mat-label>Type</mat-label>
+                            <!-- <input matInput formControlName="type"> -->
+                            <mat-select formControlName="type" name="type">
+                                    <mat-option *ngFor="let type of types" [value]="type.viewValue">
+                                        {{type.viewValue}}
+                                    </mat-option>
+                                    </mat-select>
+                        </mat-form-field>
+                    
+                        <mat-form-field appearance="outline" fxFlex="15">
+                            <mat-label>SubType</mat-label>
+                            <mat-select formControlName="subType" name="subType" (selectionChange)="onSubTypeChange($event, index)">
+                            <mat-option *ngFor="let subType of subTypes" [value]="subType.viewValue">
+                                {{subType.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <ng-container *ngTemplateOutlet="otherComp; context: { $implicit: index, subType : selectedSubType(index) }" fxFlex="50"></ng-container>
+                        
+                        <div>
+                            <button mat-stroked-button color="accent" type="button" (click) = "addCriteria()">ADD</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>     
+        
+        <div class="stock-inventory__buttons">
+            <button mat-stroked-button color="accent" type="button" (click) = "onSubmit()" > SUBMIT </button>
+        </div>
+        
+        <pre>{{ parentForm.value | json }}</pre>
+    </form>
+    
+    <ng-template #otherComp let-index let-context = "subType">
+        <!-- <p> subType : {{ context }} index : {{ index }}</p>         -->
+        <app-child *ngIf="context == 'Age'" [parentForm] = "parentForm" [index]="index" ></app-child>
+        <app-second *ngIf="context == 'Radius'" [parentForm] = "parentForm" [index]="index"></app-second>
+        <!-- <app-child *ngIf="context.subType == 'Gender'" [parentForm] = "parentForm" [index]="context.index" ></app-child> -->
+    </ng-template>
+    
+</div>

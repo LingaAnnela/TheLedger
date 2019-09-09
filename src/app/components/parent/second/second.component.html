@@ -1,0 +1,23 @@
+<div [formGroup]="parentForm">
+    <div formArrayName="criteriaArr">
+        <!-- <div *ngFor="let item of criteriaArr; let i = index;"> -->
+        <div class="stock-product__content" [formGroupName]="index">
+            <div formGroupName="subGroup">
+                <mat-form-field appearance="outline">
+                    <mat-label>Condition</mat-label>
+                    <input matInput formControlName="condition" name="condition">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Radius</mat-label>
+                    <input matInput formControlName="radius" name="radius">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Units</mat-label>
+                    <input matInput formControlName="units" name="units">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>
