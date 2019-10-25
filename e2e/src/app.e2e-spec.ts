@@ -10,6 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
+    browser.pause();
     expect(page.getTitleText()).toEqual('Welcome to Ledger!');
   });
 
