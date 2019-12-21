@@ -79,7 +79,6 @@ export class ManageclientDialogComponent implements OnInit {
         console.error('The form is invalid');
       } else {
         this.dialogRef.close(this.clientForm);
-        // this.clientDetails.emit(this.clientForm.value);
       }
     }
 
@@ -91,7 +90,6 @@ export class ManageclientDialogComponent implements OnInit {
       console.error('The form is invalid');
     } else {
       this.dialogRef.close(this.editForm);
-      // this.clientDetails.emit(this.clientForm.value);
     }
   }
 
