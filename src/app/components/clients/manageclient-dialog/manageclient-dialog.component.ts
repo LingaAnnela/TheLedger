@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter, ViewChild, SimpleChanges } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ClientsComponent } from '../clients.component';
 import { Client } from 'src/app/models/client.model';
@@ -16,7 +16,7 @@ export class ManageclientDialogComponent implements OnInit {
   // Reactive forms!
   editForm: FormGroup;
 
-  isViewClicked: boolean;
+  isViewClicked!: boolean;
   isEditClicked: boolean;
   isDeleteClicked: boolean;
   isNewClicked: boolean;
@@ -32,6 +32,7 @@ export class ManageclientDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ClientsComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData) { }
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnChanges() {
     console.log('ngOnChanges');
   }
@@ -49,11 +50,11 @@ export class ManageclientDialogComponent implements OnInit {
     if(this.isEditClicked){
       this.editForm = new FormGroup({
         // if using nested controls, then use form group inside of this fromgroup.
-        'id': new FormControl(this.clientData.id, Validators.required),
-        'firstName': new FormControl(this.clientData.firstName, Validators.required),
-        'lastName': new FormControl(this.clientData.lastName, Validators.required),
-        'phoneNo': new FormControl(this.clientData.phoneNo, Validators.required),
-        'email': new FormControl(this.clientData.email, [Validators.required, Validators.email])
+        id: new FormControl(this.clientData.id, Validators.required),
+        firstName: new FormControl(this.clientData.firstName, Validators.required),
+        lastName: new FormControl(this.clientData.lastName, Validators.required),
+        phoneNo: new FormControl(this.clientData.phoneNo, Validators.required),
+        email: new FormControl(this.clientData.email, [Validators.required, Validators.email])
       });
     }
   }
@@ -71,8 +72,8 @@ export class ManageclientDialogComponent implements OnInit {
 
   onSubmit() {
     console.log('Client : ' + this.clientForm);
-    
-    if(this.isDeleteClicked) {
+
+    if (this.isDeleteClicked) {
       this.dialogRef.close(this.clientData);
     } else {
       if (!this.clientForm.valid) {
@@ -95,6 +96,7 @@ export class ManageclientDialogComponent implements OnInit {
 
   onChangeField() {
     this.isChanged = true;
+    // tslint:disable-next-line: no-console
     console.debug(this.isChanged);
   }
 
