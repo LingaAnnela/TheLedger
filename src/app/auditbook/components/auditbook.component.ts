@@ -28,7 +28,7 @@ export class AuditbookComponent implements OnInit {
                   '#36A2EB',
                   '#FFCE56'
               ]
-          }]    
+          }]
       };
   }
 
