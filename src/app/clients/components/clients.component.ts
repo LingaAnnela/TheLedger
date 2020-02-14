@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Client } from 'src/app/models/client.model';
 import { MatDialog } from '@angular/material';
 import { ManageclientDialogComponent } from './manageclient-dialog/manageclient-dialog.component';
@@ -18,7 +18,7 @@ export class ClientsComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     console.log('ngOnChanges');
   }
 
@@ -32,12 +32,12 @@ export class ClientsComponent implements OnInit {
       { id: 5, firstName: 'Linga', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' },
       { id: 6, firstName: 'Sruthi', lastName: 'Annela', email: 'alreddy@ashta.com', phoneNo: '987-987-1230' }
     ];
-    let availClients = localStorage.getItem('clients');
+    const availClients = localStorage.getItem('clients');
 
     if(!availClients){
       localStorage.setItem('clients', JSON.stringify(data));
     } else {
-      console.log('LocalStorage : '+JSON.parse(availClients));
+      console.log('LocalStorage : ' +JSON.parse(availClients));
     }
 
     this.clients = JSON.parse(localStorage.getItem('clients'));
@@ -83,11 +83,11 @@ export class ClientsComponent implements OnInit {
         id = this.clients[this.clients.length - 1].id;
       }
       let newClient = {
-        'id' : id+1,
-        'firstName' : res.value.clientName.firstName,
-        'lastName' : res.value.clientName.lastName,
-        'phoneNo' : res.value.phoneNo,
-        'email' : res.value.email
+        id : id+1,
+        firstName : res.value.clientName.firstName,
+        lastName : res.value.clientName.lastName,
+        phoneNo : res.value.phoneNo,
+        email : res.value.email
       }
       this.clients.push(newClient);
       localStorage.setItem('clients', JSON.stringify(this.clients));
@@ -95,15 +95,14 @@ export class ClientsComponent implements OnInit {
   } 
 
   editClient(res, index) {
-    let id = 1;
     this.clients = this.clients.map(val => {
       if(val.id == res.value.id){
         return {
-          'id' : res.value.id,
-          'firstName' : res.value.firstName,
-          'lastName' : res.value.lastName,
-          'phoneNo' : res.value.phoneNo,
-          'email' : res.value.email
+          id : res.value.id,
+          firstName : res.value.firstName,
+          lastName : res.value.lastName,
+          phoneNo : res.value.phoneNo,
+          email : res.value.email
         };
       } else {
         return val;
