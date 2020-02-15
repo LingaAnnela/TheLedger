@@ -12,45 +12,47 @@
             </button>
         </span>
     </div>
-    <div *ngFor="let client of clients; let index = index">
-        <mat-card class="client-card" (click)="onViewClient(client)">
-            <span class="client-card__item-1">
-                <span *ngIf="client.firstName == 'Linga'">
-                    <img src="../../../assets/images/dp.jpg" alt="" srcset="">
-                </span>
-                <span *ngIf="client.firstName == 'Sruthi'">
-                    <img src="../../../assets/images/4.jpg" alt="" srcset="">
-                </span>
-            </span>
-            <span class="client-card__item-2">
-                <span class="client-card__item-2--f-name">
-                    {{ client.firstName }}
-                </span>
-                <span class="client-card__item-2--l-name">
-                    {{ client.lastName }}
-                </span>
-            </span>
-            <span class="client-card__item-3">
-                <button mat-stroked-button style="color : green"
-                    (click)="onEditClient(client, index); $event.stopPropagation()">
-                    <span>
-                        <mat-icon>edit</mat-icon>
-                        <span class="desktop-view">
-                            EDIT
-                        </span>
+    <!-- <div *ngIf="clientsSelector$ | async as clients" > -->
+        <div *ngFor="let client of clients; let index = index">
+            <mat-card class="client-card" (click)="onViewClient(client)">
+                <span class="client-card__item-1">
+                    <span *ngIf="client.firstName == 'Linga'">
+                        <img src="../../../assets/images/dp.jpg" alt="" srcset="">
                     </span>
-                </button>
-            </span>
-            <span class="client-card__item-4">
-                <button mat-stroked-button color="warn" (click)="onDeleteClient(client, index); $event.stopPropagation()">
-                    <span>
-                        <mat-icon>delete_forever</mat-icon>
-                        <span class="desktop-view">
-                            DELETE
-                        </span>
+                    <span *ngIf="client.firstName == 'Sruthi'">
+                        <img src="../../../assets/images/4.jpg" alt="" srcset="">
                     </span>
-                </button>
-            </span>
-        </mat-card>
-    </div>
+                </span>
+                <span class="client-card__item-2">
+                    <span class="client-card__item-2--f-name">
+                        {{ client.firstName }}
+                    </span>
+                    <span class="client-card__item-2--l-name">
+                        {{ client.lastName }}
+                    </span>
+                </span>
+                <span class="client-card__item-3">
+                    <button mat-stroked-button style="color : green"
+                        (click)="onEditClient(client, index); $event.stopPropagation()">
+                        <span>
+                            <mat-icon>edit</mat-icon>
+                            <span class="desktop-view">
+                                EDIT
+                            </span>
+                        </span>
+                    </button>
+                </span>
+                <span class="client-card__item-4">
+                    <button mat-stroked-button color="warn" (click)="onDeleteClient(client, index); $event.stopPropagation()">
+                        <span>
+                            <mat-icon>delete_forever</mat-icon>
+                            <span class="desktop-view">
+                                DELETE
+                            </span>
+                        </span>
+                    </button>
+                </span>
+            </mat-card>
+        </div>
+    <!-- </div> -->
 </section>

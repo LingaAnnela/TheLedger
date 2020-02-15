@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ManageclientDialogComponent } from './components/manageclient-dialog/manageclient-dialog.component';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import * as fromReducer from './state/clients.reducer';
 
 const ROUTES: Routes = [{ path: '', component: ClientsComponent }];
 
@@ -16,7 +17,7 @@ const ROUTES: Routes = [{ path: '', component: ClientsComponent }];
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    StoreModule.forFeature('clients', {}),
+    StoreModule.forFeature(fromReducer.clientsFeatureKey, fromReducer.reducer),
     EffectsModule.forFeature([]),
     RouterModule.forChild(ROUTES)
   ],
