@@ -32,10 +32,6 @@ export class ManageclientDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ClientsComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData) { }
 
-  // tslint:disable-next-line: use-lifecycle-interface
-  ngOnChanges() {
-    console.log('ngOnChanges');
-  }
   ngOnInit() {
     this.isChanged = false;
     // Have to handle other cases
@@ -47,7 +43,7 @@ export class ManageclientDialogComponent implements OnInit {
     this.clientData = this.dialogData.data;
     console.log('this client : ' + JSON.stringify(this.clientData));
 
-    if(this.isEditClicked){
+    if (this.isEditClicked) {
       this.editForm = new FormGroup({
         // if using nested controls, then use form group inside of this fromgroup.
         id: new FormControl(this.clientData.id, Validators.required),
@@ -58,21 +54,8 @@ export class ManageclientDialogComponent implements OnInit {
       });
     }
   }
-  /*
-  onSubmit(form: NgForm) {
-    console.log(form);
-    if(!form.valid){
-      alert('The form is invalid');
-    } else {
-      this.dialogRef.close(form);
-      this.clientDetails.emit(form.value);
-    }
-  }
-  */
 
   onSubmit() {
-    console.log('Client : ' + this.clientForm);
-
     if (this.isDeleteClicked) {
       this.dialogRef.close(this.clientData);
     } else {
@@ -86,18 +69,11 @@ export class ManageclientDialogComponent implements OnInit {
   }
 
   onEditAndSubmit() {
-    console.log(this.editForm);
     if (!this.editForm.valid) {
       console.error('The form is invalid');
     } else {
       this.dialogRef.close(this.editForm);
     }
-  }
-
-  onChangeField() {
-    this.isChanged = true;
-    // tslint:disable-next-line: no-console
-    console.debug(this.isChanged);
   }
 
   onCancelDialog(): void {
