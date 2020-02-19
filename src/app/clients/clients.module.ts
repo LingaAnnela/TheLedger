@@ -7,7 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ManageclientDialogComponent } from './components/manageclient-dialog/manageclient-dialog.component';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClientsEffects } from './state/clients.effects';
 import * as fromReducer from './state/clients.reducer';
+import { ClientsService } from './services/client.service';
 
 const ROUTES: Routes = [{ path: '', component: ClientsComponent }];
 
@@ -18,10 +20,11 @@ const ROUTES: Routes = [{ path: '', component: ClientsComponent }];
     ReactiveFormsModule,
     MaterialModule,
     StoreModule.forFeature(fromReducer.clientsFeatureKey, fromReducer.reducer),
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature([ClientsEffects]),
     RouterModule.forChild(ROUTES)
   ],
   declarations: [ClientsComponent, ManageclientDialogComponent],
+  providers: [ClientsService],
   entryComponents: [ManageclientDialogComponent]
 })
 export class ClientsModule {}

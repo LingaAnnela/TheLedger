@@ -22,16 +22,16 @@ const clientsReducer = createReducer(
     initialState,
     on(fromActions.loadClients, (state: State, { clients }) => ({ ...state, clients , loaded: true })),
     on(fromActions.saveClient, (state: State, { client }) => {
-       return ({ ...state, clients: [...state.clients, client] , loaded: true });
+       return ({ ...state, id: state.clients.length, clients: [...state.clients, client] , loaded: true });
     }),
-    on(fromActions.updateClient, (state: State, { index, client }) => {
+    on(fromActions.updateClient, (state: State, { id, client }) => {
         const clientsCopy = Object.assign([], state.clients);
-        clientsCopy[index] = client;
+        clientsCopy[id] = client;
         return  ({ ...state, clients: clientsCopy, loaded: true });
     }),
-    on(fromActions.deleteClient, (state: State, { index }) => {
+    on(fromActions.deleteClient, (state: State, { id }) => {
         const clientsCopy = Object.assign([], state.clients);
-        clientsCopy.splice(index, 1);
+        clientsCopy.splice(id, 1);
         return  ({ ...state, clients: clientsCopy, loaded: true });
     })
 );

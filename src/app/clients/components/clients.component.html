@@ -14,7 +14,7 @@
     </div>
     <!-- <div *ngIf="clientsSelector$ | async as clients" > -->
         <div *ngFor="let client of clients; let index = index">
-            <mat-card class="client-card" (click)="onViewClient(client)">
+            <mat-card class="client-card" (click)="onViewClient(client, index)">
                 <span class="client-card__item-1">
                     <span *ngIf="client.firstName == 'Linga'">
                         <img src="../../../assets/images/dp.jpg" alt="" srcset="">
