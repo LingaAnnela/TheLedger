@@ -7,8 +7,12 @@
       Add Client
     </span>
     <span *ngIf="isEditClicked" class="client-dialog__header--title">
-      <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset=""
-        style="height: 40px; width: 40px; border-radius: 50%">
+      <img
+        src="../../../../assets/images/dp-fb.jpg"
+        alt=""
+        srcset=""
+        style="height: 40px; width: 40px; border-radius: 50%"
+      />
       Edit Client
     </span>
     <span *ngIf="isDeleteClicked" class="client-dialog__header--title">
@@ -18,22 +22,33 @@
 
   <div class="client-dialog__body">
     <ng-container *ngIf="isViewClicked">
-      <ng-container *ngTemplateOutlet="viewClient;context:{ $implicit: clientData }"> </ng-container>
+      <ng-container
+        *ngTemplateOutlet="viewClient; context: { $implicit: clientData }"
+      >
+      </ng-container>
     </ng-container>
 
     <ng-container *ngIf="isNewClicked">
-      <ng-container *ngTemplateOutlet="newClient;context:{ $implicit: clientData }"> </ng-container>
+      <ng-container
+        *ngTemplateOutlet="newClient; context: { $implicit: clientData }"
+      >
+      </ng-container>
     </ng-container>
 
     <ng-container *ngIf="isEditClicked">
-      <ng-container *ngTemplateOutlet="editClient;context:{ $implicit: clientData }"> </ng-container>
+      <ng-container
+        *ngTemplateOutlet="editClient; context: { $implicit: clientData }"
+      >
+      </ng-container>
     </ng-container>
 
     <ng-container *ngIf="isDeleteClicked">
-      <ng-container *ngTemplateOutlet="deleteClient;context:{ $implicit: clientData }"> </ng-container>
+      <ng-container
+        *ngTemplateOutlet="deleteClient; context: { $implicit: clientData }"
+      >
+      </ng-container>
     </ng-container>
   </div>
-
 </section>
 
 <!-- 
@@ -44,10 +59,11 @@
   <mat-card>
     <mat-nav-list>
       <p mat-list-item class="client-dialog__body--img">
-        <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="">
+        <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="" />
       </p>
       <p mat-list-item class="client-dialog__body--fName">
-        <label for="">Name : </label> {{ clientD.firstName }} {{ clientD.lastName }}
+        <label for="">Name : </label> {{ clientD.firstName }}
+        {{ clientD.lastName }}
       </p>
       <p mat-list-item class="client-dialog__body--phNo">
         <label for="">Phone : </label> {{ clientD.phoneNo }}
@@ -72,19 +88,38 @@
         <p mat-list-item class="client-dialog__body--img">
           <span>
             <mat-icon>camera_alt</mat-icon>
+            <!-- <input #file type="file" multiple (change)="uploadFile($event)" ngModel name="image" #image="ngModel" /> -->
           </span>
           <!-- <img src="" alt="" srcset=""> -->
         </p>
-        <span mat-list-item class="client-dialog__body--fName desktop__mobile" ngModelGroup="clientName"
-          #clientName="ngModelGroup">
+        <span
+          mat-list-item
+          class="client-dialog__body--fName desktop__mobile"
+          ngModelGroup="clientName"
+          #clientName="ngModelGroup"
+        >
           <!-- <label for="">First Name : </label>  -->
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="Linga" ngModel name="firstName" required #firstName="ngModel">
+            <input
+              matInput
+              placeholder="Linga"
+              ngModel
+              name="firstName"
+              required
+              #firstName="ngModel"
+            />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Annela" ngModel name="lastName" required #lastName="ngModel">
+            <input
+              matInput
+              placeholder="Annela"
+              ngModel
+              name="lastName"
+              required
+              #lastName="ngModel"
+            />
           </mat-form-field>
         </span>
 
@@ -96,11 +131,26 @@
         <span mat-list-item class="client-dialog__body--phNo desktop__mobile">
           <mat-form-field appearance="outline">
             <mat-label>Phone No</mat-label>
-            <input matInput placeholder="203-970-9860" ngModel name="phoneNo" required #phoneNo="ngModel">
+            <input
+              matInput
+              placeholder="203-970-9860"
+              ngModel
+              name="phoneNo"
+              required
+              #phoneNo="ngModel"
+            />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="alreddy@ashta.in" ngModel name="email" required email #email="ngModel">
+            <input
+              matInput
+              placeholder="alreddy@ashta.in"
+              ngModel
+              name="email"
+              required
+              email
+              #email="ngModel"
+            />
           </mat-form-field>
         </span>
       </mat-nav-list>
@@ -108,7 +158,7 @@
 
     <div class="client-dialog__footer">
       <span class="client-dialog__footer--item-1">
-        <button mat-stroked-button color="warn" (click)=onCancelDialog()>
+        <button mat-stroked-button color="warn" (click)="onCancelDialog()">
           Cancel
         </button>
       </span>
@@ -125,52 +175,57 @@
   <form [formGroup]="editForm" (ngSubmit)="onEditAndSubmit()">
     <mat-card>
       <mat-nav-list>
-        <span mat-list-item class="client-dialog__body--img">
-
-        </span>
+        <span mat-list-item class="client-dialog__body--img"> </span>
         <!-- Bundle the fileds to be grouped into the formGroupName which is same as the name used in the formGroup in ts. -->
         <span mat-list-item class="client-dialog__body--fName desktop__mobile">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput formControlName="firstName">
+            <input matInput formControlName="firstName" />
           </mat-form-field>
           <!-- If you are using the nested controls in the form group then, you should access using the groupName.firstName. -->
           <!-- <span *ngIf="!editForm.get('firstName').valid && editForm.get('firstName').touched">firstName is Invalid</span> -->
 
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput formControlName="lastName">
+            <input matInput formControlName="lastName" />
           </mat-form-field>
           <!-- <span *ngIf="!editForm.get('lastName').valid && editForm.get('lastName').touched">lastName is Invalid</span> -->
-
         </span>
 
         <span mat-list-item class="client-dialog__body--phNo desktop__mobile">
           <mat-form-field appearance="outline">
             <mat-label>Phone No</mat-label>
-            <input matInput formControlName="phoneNo">
+            <input matInput formControlName="phoneNo" />
           </mat-form-field>
           <!-- <span *ngIf="!editForm.get('phoneNo').valid && editForm.get('phoneNo').touched">phoneNo is Invalid</span> -->
 
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email">
+            <input matInput formControlName="email" />
           </mat-form-field>
 
           <!-- <span *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Email is Invalid</span> -->
-
         </span>
       </mat-nav-list>
     </mat-card>
 
     <div class="client-dialog__footer">
       <span class="client-dialog__footer--item-1">
-        <button mat-stroked-button color="warn" type="button" (click)=onCancelDialog()>
+        <button
+          mat-stroked-button
+          color="warn"
+          type="button"
+          (click)="onCancelDialog()"
+        >
           Cancel
         </button>
       </span>
       <span class="client-dialog__footer--item-2">
-        <button mat-raised-button color="primary" [disabled]="!editForm.valid && !editForm.touched">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!editForm.valid && !editForm.touched"
+        >
           Submit
         </button>
       </span>
@@ -186,7 +241,7 @@
 <ng-template #footer>
   <div class="client-dialog__footer">
     <span class="client-dialog__footer--item-1">
-      <button mat-stroked-button color="warn" (click)=onCancelDialog()>
+      <button mat-stroked-button color="warn" (click)="onCancelDialog()">
         <span *ngIf="isViewClicked">
           Close
         </span>
@@ -196,7 +251,12 @@
       </button>
     </span>
     <span class="client-dialog__footer--item-2" *ngIf="!isViewClicked">
-      <button mat-raised-button color="warn" *ngIf="isDeleteClicked" (click)="onSubmit()">
+      <button
+        mat-raised-button
+        color="warn"
+        *ngIf="isDeleteClicked"
+        (click)="onSubmit()"
+      >
         Yes, Delete
       </button>
       <button mat-raised-button color="primary" *ngIf="!isDeleteClicked">

@@ -1,21 +1,33 @@
-import { Component, OnInit, Inject, Output, EventEmitter, ViewChild, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Inject,
+  Output,
+  EventEmitter,
+  ViewChild,
+  OnDestroy
+} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ClientsComponent } from '../clients.component';
 import { Client } from 'src/app/models/client.model';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import * as fromSelectors from '../../state/clients.selectors';
+import * as fromActions from '../../state/clients.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-manageclient-dialog',
   templateUrl: './manageclient-dialog.component.html',
   styleUrls: ['./manageclient-dialog.component.scss']
 })
-
-export class ManageclientDialogComponent implements OnInit {
+export class ManageclientDialogComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
 
   @ViewChild('form', { static: false }) clientForm: NgForm;
   // Reactive forms!
   editForm: FormGroup;
-
+  id: any = 0;
   isViewClicked!: boolean;
   isEditClicked: boolean;
   isDeleteClicked: boolean;
@@ -29,50 +41,86 @@ export class ManageclientDialogComponent implements OnInit {
   public deleteClient = new EventEmitter();
 
   constructor(
-    public dialogRef: MatDialogRef<ClientsComponent>,
-    @Inject(MAT_DIALOG_DATA) public dialogData) { }
+    private store: Store<{}>,
+    public dialogRef: MatDialogRef<ManageclientDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public dialogData
+  ) {}
 
   ngOnInit() {
     this.isChanged = false;
     // Have to handle other cases
-    this.isEditClicked = (this.dialogData.type === 'editClicked') ? true : false;
-    this.isNewClicked = (this.dialogData.type === 'newClicked') ? true : false;
-    this.isDeleteClicked = (this.dialogData.type === 'deleteClicked') ? true : false;
-    this.isViewClicked = (this.dialogData.type === 'viewClicked') ? true : false;
+    this.id = this.dialogData.id;
+    this.isEditClicked = this.dialogData.type === 'EDIT' ? true : false;
+    this.isNewClicked = this.dialogData.type === 'NEW' ? true : false;
+    this.isDeleteClicked = this.dialogData.type === 'DELETE' ? true : false;
+    this.isViewClicked = this.dialogData.type === 'VIEW' ? true : false;
+    const sub = this.store.select(fromSelectors.selectClientById, { id: this.dialogData.id }).subscribe(res => {
+      this.clientData = this.dialogData.data;
+      if (this.isEditClicked) {
+        this.editForm = new FormGroup({
+          // if using nested controls, then use form group inside of this fromgroup.
+          id: new FormControl(this.clientData.id, Validators.required),
+          firstName: new FormControl(
+            this.clientData.firstName,
+            Validators.required
+          ),
+          lastName: new FormControl(
+            this.clientData.lastName,
+            Validators.required
+          ),
+          phoneNo: new FormControl(this.clientData.phoneNo, Validators.required),
+          email: new FormControl(this.clientData.email, [
+            Validators.required,
+            Validators.email
+          ])
+        });
+        // Could use set values or patch values.
+      }
+    });
 
-    this.clientData = this.dialogData.data;
-    console.log('this client : ' + JSON.stringify(this.clientData));
+    this.subscriptions.push(sub);
+  }
 
-    if (this.isEditClicked) {
-      this.editForm = new FormGroup({
-        // if using nested controls, then use form group inside of this fromgroup.
-        id: new FormControl(this.clientData.id, Validators.required),
-        firstName: new FormControl(this.clientData.firstName, Validators.required),
-        lastName: new FormControl(this.clientData.lastName, Validators.required),
-        phoneNo: new FormControl(this.clientData.phoneNo, Validators.required),
-        email: new FormControl(this.clientData.email, [Validators.required, Validators.email])
-      });
-    }
+  uploadFile(event: any) {
+    const files: FileList = event.target.files;
+    const file = files.item(0);
+    console.log(file);
+    // this.store$.dispatch(
+    //   new fromFileUploadActions.UploadRequestAction({
+    //     file
+    //   })
+    // );
+
+    // clear the input form
+    event.srcElement.value = null;
   }
 
   onSubmit() {
-    if (this.isDeleteClicked) {
-      this.dialogRef.close(this.clientData);
-    } else {
-      if (!this.clientForm.valid) {
-        console.error('The form is invalid');
-      } else {
-        this.dialogRef.close(this.clientForm);
-      }
+    if (this.isNewClicked) {
+      const client: Client = {
+        firstName: this.clientForm.value.clientName.firstName,
+        lastName: this.clientForm.value.clientName.lastName,
+        phoneNo: this.clientForm.value.phoneNo,
+        email: this.clientForm.value.email
+      };
+      this.store.dispatch(
+        fromActions.saveClient({ client })
+      );
+    } else if (this.isDeleteClicked){
+      this.store.dispatch(fromActions.deleteClient({ id: this.id }));
     }
 
+    this.dialogRef.close();
   }
 
   onEditAndSubmit() {
     if (!this.editForm.valid) {
       console.error('The form is invalid');
     } else {
-      this.dialogRef.close(this.editForm);
+      this.store.dispatch(
+        fromActions.updateClient({ id: this.id, client: this.editForm.value })
+      );
+      this.dialogRef.close();
     }
   }
 
@@ -80,4 +128,7 @@ export class ManageclientDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  ngOnDestroy(){
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
 }
