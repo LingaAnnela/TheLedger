@@ -1,0 +1,19 @@
+{
+  "auditbook": "AuditBook",
+  "theledger": "El Libro Mayor",
+  "selectLanguage": "Seleccione el idioma",
+  "language": "el idioma",
+  "languages": {
+    "english": "Inglesa",
+    "spanish": "Español",
+    "telugu": "Telugu"
+  },
+  "sidenav": {
+    "dashboard": "Dashboard",
+    "clients": "Clients",
+    "auditbook": "AuditBook",
+    "chitfund": "Chitfund",
+    "login": "Login",
+    "signup": "Signup"
+  }
+}

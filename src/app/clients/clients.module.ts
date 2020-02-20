@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientsEffects } from './state/clients.effects';
 import * as fromReducer from './state/clients.reducer';
 import { ClientsService } from './services/client.service';
+import { TRANSLOCO_SCOPE, TranslocoModule } from '@ngneat/transloco';
 
 const ROUTES: Routes = [{ path: '', component: ClientsComponent }];
 
@@ -21,10 +22,14 @@ const ROUTES: Routes = [{ path: '', component: ClientsComponent }];
     MaterialModule,
     StoreModule.forFeature(fromReducer.clientsFeatureKey, fromReducer.reducer),
     EffectsModule.forFeature([ClientsEffects]),
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    TranslocoModule
   ],
   declarations: [ClientsComponent, ManageclientDialogComponent],
-  providers: [ClientsService],
+  providers: [
+    ClientsService,
+    { provide: TRANSLOCO_SCOPE, useValue: 'clients' }
+  ],
   entryComponents: [ManageclientDialogComponent]
 })
 export class ClientsModule {}

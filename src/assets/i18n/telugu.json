@@ -1,0 +1,19 @@
+{
+  "auditbook": "AuditBook",
+  "theledger": "దస్తావేజులు",
+  "selectLanguage": "భాషని ఎంచుకొండి",
+  "language": "భాష",
+  "languages": {
+    "english": "ఆంగ్లం",
+    "spanish": "స్పానిష్",
+    "telugu": "తెలుగు"
+  },
+  "sidenav": {
+    "dashboard": "డ్యాష్ బోర్డ్",
+    "clients": "ఖాతాధారులు",
+    "auditbook": "ఆడిట్ బుక్",
+    "chitfund": "చిట్ ఫండ్",
+    "login": "లాగ్ ఇన్",
+    "signup": "సైన్ అప్"
+  }
+}
