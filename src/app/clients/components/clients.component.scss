@@ -1,130 +1,123 @@
-@import '../../../scss/vars';
-@import '../../../scss/mixins';
+@import "../../../scss/vars";
+@import "../../../scss/mixins";
 
-@function color($color){
-    @return map-get($colors , $color);
+@function color($color) {
+  @return map-get($colors, $color);
 }
 
-
 img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .mat-icon {
-    vertical-align: middle;
-    height: 30px;
-    width: 30px;
- }
+  vertical-align: middle;
+  height: 30px;
+  width: 30px;
+}
 
- mat-card {
-     border-radius: 10px;
-     margin-top: 10px;
-     height: 60px;
- }
+mat-card {
+  border-radius: 10px;
+  margin-top: 10px;
+  height: 60px;
+}
 
- .material-icons{
-     font-size: 27px;
- }
+.material-icons {
+  font-size: 27px;
+}
 
 .page-title {
-    display: flex;
-    flex-direction: row;
-    padding: 10px 20px;
-    border-bottom: 1px solid #d8d8d8;
-    align-items: center;
-    // justify-content: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px;
+  border-bottom: 1px solid #d8d8d8;
+  align-items: center;
+  // justify-content: center;
+  justify-content: space-between;
 
-    @include desktop {
-        width: 55%;
-        margin-left: auto;
-	    margin-right: auto;
-    }
+  @include desktop {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .page-title__display {
-    // font-family: Roboto,"Helvetica Neue",sans-serif;
-    font-family: 'Montserrat', sans-serif;
-    // font-family: 'Raleway', sans-serif;
-    // font-family: 'PT Serif', serif;
-    text-transform: none;
-    font-size: 35px;
-    line-height: 50px;
-    color: darken($color: color(red_color), $amount: 10%) ;
-    // color: lighten( color(red_color), 20% )
-}
-
-.page-title__new {
-    // align-self: flex-end;
+  // font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-family: "Montserrat", sans-serif;
+  // font-family: 'Raleway', sans-serif;
+  // font-family: 'PT Serif', serif;
+  text-transform: none;
+  font-size: 35px;
+  line-height: 50px;
+  color: darken($color: color(red_color), $amount: 10%);
+  // color: lighten( color(red_color), 20% )
 }
 
 .client-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    margin-top: 10px;
-    height: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin-top: 10px;
+  // height: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
 
-    @include desktop {
-        width: 55%;
-        height: 25px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  @include desktop {
+    width: 55%;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .client-card__item-1 {
-    flex: 1;
-    height: 50px;
-    max-width: 50px;
-    border-radius: 50%;
-    background: lighten($color: color(red_color), $amount: 40%);
-    margin-right: 10px;
+  flex: 1;
+  height: 50px;
+  max-width: 50px;
+  border-radius: 50%;
+  background: lighten($color: color(red_color), $amount: 40%);
+  margin-right: 10px;
 }
 
 .client-card__item-2 {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    
+  flex: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .client-card__item-2--f-name {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
 .client-card__item-2--l-name {
-    font-family: 'Montserrat', sans-serif;
-    
+  font-family: "Montserrat", sans-serif;
 }
 
 .client-card__item-3 {
-    flex: 1;
+  flex: 1;
 }
 
 .client-card__item-4 {
-    flex: 1;
-    margin-left: 5px;
+  flex: 1;
+  margin-left: 5px;
 }
 
 .desktop-view {
-    display: none;
-    @include desktop {
-        display: inline-block;
-    }
+  display: none;
+  @include desktop {
+    display: inline-block;
+  }
 }
 
 .page-title-sec {
-    padding: 20px 40px;
-    background-color: $primary_color;
-    border-bottom: 1px solid #d8d8d8;
-    background-color: white;
-    height: auto;
+  padding: 20px 40px;
+  background-color: $primary_color;
+  border-bottom: 1px solid #d8d8d8;
+  background-color: white;
+  height: auto;
 }

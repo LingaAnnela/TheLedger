@@ -1,6 +1,6 @@
 <div class="client-profile">
   <span class="client-profile__img-sec">
-      <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="">
+    <img src="../../../../assets/images/dp-fb.jpg" alt="" srcset="" />
   </span>
   <span class="client-profile__det-sec">
     <h3>Linga Annela</h3>
@@ -8,51 +8,87 @@
 </div>
 
 <mat-nav-list class="sidenav-list">
-
-  <a mat-list-item href="" class="sidenav-list__item--home" *ngIf="!isAuth" routerLink="/" (click)="onClose()">
+  <a
+    mat-list-item
+    href=""
+    class="sidenav-list__item--home"
+    *ngIf="!isAuth"
+    routerLink="/"
+    (click)="onClose()"
+  >
     <mat-icon>dashboard</mat-icon>
     <span class="nav-caption">
-      <label for="">Dashboard</label>
+      <label for="">{{ "sidenav.dashboard" | transloco }}</label>
     </span>
   </a>
 
-  <a mat-list-item href="" class="sidenav-list__item--clients" *ngIf="!isAuth" routerLink="/clients"
-    (click)="onClose()">
+  <a
+    mat-list-item
+    href=""
+    class="sidenav-list__item--clients"
+    *ngIf="!isAuth"
+    routerLink="/clients"
+    (click)="onClose()"
+  >
     <mat-icon>group_add</mat-icon>
     <span class="nav-caption">
-      <label for="">Clients</label>
+      <label for="">{{ "sidenav.clients" | transloco }}</label>
     </span>
   </a>
 
-  <a mat-list-item href="" class="sidenav-list__item--login" *ngIf="!isAuth" routerLink="/auditbook"
-    (click)="onClose()">
+  <a
+    mat-list-item
+    href=""
+    class="sidenav-list__item--login"
+    *ngIf="!isAuth"
+    routerLink="/auditbook"
+    (click)="onClose()"
+  >
     <mat-icon>collections_bookmark </mat-icon>
     <span class="nav-caption">
-      <label for="">AuditBook</label>
+      <label for="">{{ "sidenav.auditbook" | transloco }}</label>
     </span>
   </a>
 
-  <a mat-list-item href="" class="sidenav-list__item--login" *ngIf="!isAuth" routerLink="/chitfunds"
-    (click)="onClose()">
+  <a
+    mat-list-item
+    href=""
+    class="sidenav-list__item--login"
+    *ngIf="!isAuth"
+    routerLink="/chitfunds"
+    (click)="onClose()"
+  >
     <mat-icon>library_books</mat-icon>
     <span class="nav-caption">
-      <label for="">Chitfund</label>
+      <label for="">{{ "sidenav.chitfund" | transloco }}</label>
     </span>
   </a>
 
-  <a mat-list-item href="" class="sidenav-list__item--login" *ngIf="!isAuth" routerLink="/auth/login"
-    (click)="onClose()">
+  <a
+    mat-list-item
+    href=""
+    class="sidenav-list__item--login"
+    *ngIf="!isAuth"
+    routerLink="/auth/login"
+    (click)="onClose()"
+  >
     <mat-icon>input</mat-icon>
     <span class="nav-caption">
-      <label for="">Login</label>
+      <label for="">{{ "sidenav.login" | transloco }}</label>
     </span>
   </a>
 
-  <a mat-list-item href="" class="sidenav-list__item--signup" *ngIf="!isAuth" routerLink="/auth/signup"
-    (click)="onClose()">
+  <a
+    mat-list-item
+    href=""
+    class="sidenav-list__item--signup"
+    *ngIf="!isAuth"
+    routerLink="/auth/signup"
+    (click)="onClose()"
+  >
     <mat-icon>person_add</mat-icon>
     <span class="nav-caption">
-      <label for="">Signup</label>
+      <label for="">{{ "sidenav.signup" | transloco }}</label>
     </span>
   </a>
 </mat-nav-list>
