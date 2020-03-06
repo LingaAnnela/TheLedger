@@ -13,8 +13,11 @@ export class ClientsEffects {
       ofType(fromActions.openManageClientModal),
       exhaustMap(action =>
         this.service
-          .showManageClientDialogWithClosedRef(
-              { type: action.typeOfOperation, id: action.id, client: action.client })
+          .showManageClientDialogWithClosedRef({
+            type: action.typeOfOperation,
+            id: action.id,
+            client: action.client
+          })
           .pipe(map(() => fromActions.closeManageClientModal()))
       )
     )
