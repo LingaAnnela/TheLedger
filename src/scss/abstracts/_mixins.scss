@@ -5,6 +5,12 @@
     }
 }
 
+@mixin ipad {
+    @media (min-width: #{$ipad}) {
+        @content;
+    }
+}
+
 @mixin flex($alignitem,$justify) {
     display: -webkit-box;
     display: -moz-box;

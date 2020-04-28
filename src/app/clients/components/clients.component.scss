@@ -1,5 +1,6 @@
 @import "../../../scss/abstracts/variables";
 @import "../../../scss/abstracts/mixins";
+@import "../../../scss/base/animations";
 
 @function color($color) {
   @return map-get($colors, $color);
@@ -81,6 +82,10 @@ mat-card {
   border-radius: 50%;
   background: lighten($color: color(red_color), $amount: 40%);
   margin-right: 10px;
+}
+
+.client-card__item-1:hover {
+  animation: flip 1s ease-out forwards;
 }
 
 .client-card__item-2 {
