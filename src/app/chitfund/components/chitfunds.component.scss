@@ -1,3 +1,333 @@
+@import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
+@import "../../../scss/base/animations";
+
+@function color($color) {
+  @return map-get($colors, $color);
+}
+
 h1 {
-    font-family: Roboto;
+  font-family: Roboto;
+}
+
+.container {
+  display: grid;
+  // grid-template-columns: 70% 30%;
+  grid-gap: 5px;
+  color: white;
+
+  &__chit-header {
+    // grid-column-start: 1;
+    // grid-column-end: 3;
+
+    height: 4em;
+    background-color: $secondary_color;
+    background: lighten($color: color(red_color), $amount: 20%);
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    &--img {
+      flex: 1;
+      height: 50px;
+      max-width: 50px;
+      border-radius: 50%;
+      background: lighten($color: color(red_color), $amount: 40%);
+      margin-left: 15px;
+      margin-right: 15px;
+
+      > img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+
+    &--img:hover img{
+      animation: flip 1s ease-out forwards;
+    }
+
+    &--title {
+      flex: 3;
+      font-family: "Montserrat", sans-serif;
+      text-transform: none;
+      font-size: 30px;
+      line-height: 30px;
+
+      display: flex;
+      flex-direction: column;
+
+      &--main {
+        font-weight: bold;
+        font-size: 24px;
+      }
+
+      &--sub {
+        font-size: 18px;
+      }
+    }
   }
+
+  &__chit-detail {
+    display: grid;
+    grid-gap: 2px;
+
+    &--title {
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.2em;
+    }
+
+    &--prop {
+      margin-left: 20px;
+    }
+
+    &--search {
+      text-align: right;
+
+      > input {
+        border-radius: 15px;
+      }
+    }
+  }
+
+  &__chit-users {
+    grid-row: span 2;
+    color: black;
+
+    &--card {
+      padding: 2px;
+      margin: 5px;
+      text-align: center;
+    }
+
+    &--card:hover {
+      background-color: $secondary_color;
+      cursor: pointer;
+      color: white;
+      animation: flip 1s ease-out forwards;
+    }
+  }
+
+  &__chit-monthly-detail {
+    // Display the month details first on smaller devices!!
+    grid-row-start: 3;
+    grid-row-end: span 1;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+
+    &--title {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    .month {
+      border: 2px solid white;
+    }
+
+    &--card {
+      margin: 5px;
+      height: 90px;
+    }
+
+    &--card:hover {
+      background-color: $secondary_color;
+      cursor: pointer;
+      color: white;
+      animation: flip 1s ease-out forwards;
+    }
+  }
+
+  margin-bottom: 50px;
+  padding-bottom: 15px;
+}
+
+
+// Width 760px Or More!!
+// iPad, iPad Pro and Laptops
+@include ipad { 
+
+  .container {
+    // margin: 20px;
+    // border: 2px salmon solid;
+  
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-gap: 5px;
+  
+    color: white;
+  
+    &__chit-header {
+      grid-column-start: 1;
+      grid-column-end: 3;
+  
+      height: 4em;
+      background-color: $secondary_color;
+      background: lighten($color: color(red_color), $amount: 20%);
+  
+      color: white;
+  
+      display: flex;
+      align-items: center;
+      // justify-content: space-between;
+      // border-radius: 10px;
+      margin-top: 10px;
+      // height: 20px;
+      // margin-left: 5px;
+      // margin-right: 5px;
+      // cursor: pointer;
+  
+      @include desktop {
+        width: 100%;
+        // height: 25px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  
+      &--img {
+        flex: 1;
+        height: 50px;
+        max-width: 50px;
+        border-radius: 50%;
+        background: lighten($color: color(red_color), $amount: 40%);
+        margin-left: 15px;
+        margin-right: 15px;
+  
+        > img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+        }
+      }
+  
+      &--img:hover img{
+        animation: flip 1s ease-out forwards;
+      }
+  
+      &--title {
+        flex: 3;
+        // font-family: Roboto,"Helvetica Neue",sans-serif;
+        font-family: "Montserrat", sans-serif;
+        // font-family: 'Raleway', sans-serif;
+        // font-family: 'PT Serif', serif;
+        text-transform: none;
+        font-size: 30px;
+        line-height: 30px;
+        // color: darken(map-get($colors, red_color), 20% )
+  
+        display: flex;
+        flex-direction: column;
+  
+        &--main {
+          font-weight: bold;
+          font-size: 24px;
+        }
+  
+        &--sub {
+          // font-weight: bold;
+          font-size: 18px;
+        }
+      }
+    }
+  
+    &__chit-detail {
+      // grid-column-start: 1;
+      // grid-column-end: 3;
+      // background-color: blueviolet;
+      // height: 10em;
+      // border: 1px blueviolet solid;
+      // color: blueviolet;
+  
+      display: grid;
+      grid-gap: 2px;
+  
+      &--title {
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.2em;
+      }
+  
+      &--prop {
+        // text-align: center;
+        margin-left: 20px;
+      }
+  
+      &--search {
+        text-align: right;
+        // margin-left: 20px;
+  
+        > input {
+          border-radius: 15px;
+        }
+      }
+    }
+  
+    &__chit-users {
+      // grid-column-start: 1;
+      // grid-column-end: 3;
+  
+      // grid-row-start: 2;
+      // grid-row-end: 4;
+      grid-row: span 2;
+      // background-color: yellowgreen;
+      color: black;
+  
+      &--card {
+        padding: 2px;
+        margin: 5px;
+        text-align: center;
+      }
+  
+      &--card:hover {
+        background-color: $secondary_color;
+        cursor: pointer;
+        color: white;
+        animation: flip 1s ease-out forwards;
+      }
+    }
+  
+    &__chit-monthly-detail {
+      // grid-column-start: 1;
+      // grid-column-end: 3;
+  
+      // height: 25em;
+      // background-color: coral;
+  
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 5px;
+  
+      .month {
+        border: 2px solid white;
+      }
+
+      &--title {
+        grid-column-start: 1;
+        grid-column-end: 5;
+      }
+  
+      &--card {
+        // padding: 2px;
+        margin: 5px;
+        height: 90px;
+        // border: $secondary_color 1px solid;
+      }
+  
+      &--card:hover {
+        background-color: $secondary_color;
+        cursor: pointer;
+        color: white;
+        animation: flip 1s ease-out forwards;
+      }
+    }
+  
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+  }
+
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { chitDetails } from '../mock.data';
 
 export interface SubType {
   value: string;
@@ -11,5 +12,7 @@ export interface SubType {
   styleUrls: ['./chitfunds.component.scss']
 })
 export class ChitfundsComponent {
+
+  chitDetails = chitDetails;
 
 }
