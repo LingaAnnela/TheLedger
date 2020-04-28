@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
 
@@ -12,7 +12,7 @@ interface Language {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   languages: Language[] = [
     { value: 'en', viewValue: 'English' },
@@ -27,6 +27,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   onChange(event: any) {
     this.translocoService.setActiveLang(this.selectedLanguage);
+  }
+
+  ngAfterViewInit() {
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+      container.classList.add('right-panel-active');
+    });
+
+    signInButton.addEventListener('click', () => {
+      container.classList.remove('right-panel-active');
+    });
   }
 
   ngOnDestroy() {
