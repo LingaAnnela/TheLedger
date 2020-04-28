@@ -8,7 +8,7 @@
     <div class="container__chit-header--img">
       <img src="../../../assets//images/4.jpg" alt="404" srcset="">
     </div>
-    <div class="container__chit-header--title">
+    <div class="container__chit-header--title animated infinite rollIn delay-2s">
       <span class="container__chit-header--title--main">
         {{ chitDetails.name }}
       </span>
@@ -69,7 +69,7 @@
 
     <div *ngFor="let month of chitDetails.months">
       <mat-card class="container__chit-monthly-detail--card">
-        Month {{ month }} : 2020
+        Month {{ month }}
       </mat-card>
     </div>
 

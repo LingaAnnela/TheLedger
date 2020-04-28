@@ -61,7 +61,7 @@ h1 {
       flex-direction: column;
 
       &--main {
-        font-weight: bold;
+        // font-weight: bold;
         font-size: 24px;
       }
 
@@ -139,7 +139,13 @@ h1 {
       background-color: $secondary_color;
       cursor: pointer;
       color: white;
-      animation: flip 1s ease-out forwards;
+      // animation: flip 1s ease-out forwards;
+
+      animation-name: headShake;
+      animation-duration: 3s;
+      animation-delay: 2s;
+      animation-iteration-count: infinite;
+
     }
   }
 
@@ -224,7 +230,7 @@ h1 {
         flex-direction: column;
   
         &--main {
-          font-weight: bold;
+          // font-weight: bold;
           font-size: 24px;
         }
   
@@ -287,7 +293,10 @@ h1 {
         background-color: $secondary_color;
         cursor: pointer;
         color: white;
-        animation: flip 1s ease-out forwards;
+        // animation: flip 1s ease-out forwards;
+
+        animation: bounceIn 3s 0s infinite forwards;
+
       }
     }
   
@@ -322,7 +331,14 @@ h1 {
         background-color: $secondary_color;
         cursor: pointer;
         color: white;
-        animation: flip 1s ease-out forwards;
+        // animation: flip 1s ease-out forwards;
+
+        animation: heartBeat 3s 0s infinite forwards;
+
+        // animation-name: headShake;
+        // animation-duration: 3s;
+        // animation-delay: 2s;
+        // animation-iteration-count: infinite;
       }
     }
   

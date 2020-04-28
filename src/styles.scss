@@ -4,6 +4,9 @@
 @import './scss/vendors/vendors';
 @import './scss/abstracts/variables';
 
+$fa-font-path: "~font-awesome/fonts";
+ @import '~font-awesome/scss/font-awesome';
+
 $custom-typography: mat-typography-config($font-family: '"Montserrat", sans-serif');
 @include mat-core($custom-typography);
 
