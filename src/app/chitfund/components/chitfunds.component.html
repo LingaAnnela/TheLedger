@@ -6,9 +6,9 @@
   <mat-card class="container__chit-header">
     <!-- Chit Header Detail -->
     <div class="container__chit-header--img">
-      <img src="../../../assets//images/4.jpg" alt="404" srcset="">
+      <img src="../../../assets//images/4.jpg" alt="404" srcset="" />
     </div>
-    <div class="container__chit-header--title animated infinite rollIn delay-2s">
+    <div class="container__chit-header--title animated jackInTheBox delay-2s">
       <span class="container__chit-header--title--main">
         {{ chitDetails.name }}
       </span>
@@ -21,7 +21,7 @@
   <mat-card class="container__chit-detail">
     <div class="container__chit-detail--title">
       <span class="container__chit-detail--title-head">
-        <h4>Chit Details </h4>
+        <h4>Chit Details</h4>
       </span>
       <mat-divider></mat-divider>
     </div>
@@ -41,23 +41,23 @@
       <mat-divider></mat-divider>
     </div>
 
-
     <div class="container__chit-detail--search">
       <!-- <label for="">Search: </label> -->
       <!-- <button mat-icon-button>
         <mat-icon>search</mat-icon>
       </button> -->
-      <input type="text" name="" id="" placeholder="Search...">
+      <input type="text" name="" id="" placeholder="Search..." />
     </div>
-
   </mat-card>
 
   <mat-card class="container__chit-users">
-    <h4>Organizer </h4>
+    <h4>Organizer</h4>
     <div>
-      <mat-card class="container__chit-users--card"> {{ chitDetails.organizer }} </mat-card>
+      <mat-card class="container__chit-users--card">
+        {{ chitDetails.organizer }}
+      </mat-card>
     </div>
-    <h4>Participants </h4>
+    <h4>Participants</h4>
     <div *ngFor="let user of chitDetails.users">
       <mat-card class="container__chit-users--card">User {{ user }} </mat-card>
     </div>
@@ -65,13 +65,12 @@
 
   <mat-card class="container__chit-monthly-detail">
     <!-- Chit Monthly Detail -->
-    <h3 class="container__chit-monthly-detail--title">Chit Monthly Details </h3>
+    <h3 class="container__chit-monthly-detail--title">Chit Monthly Details</h3>
 
     <div *ngFor="let month of chitDetails.months">
       <mat-card class="container__chit-monthly-detail--card">
         Month {{ month }}
       </mat-card>
     </div>
-
   </mat-card>
 </div>
