@@ -15,7 +15,7 @@ export const initialState: State = {
   clients: [],
   isLoading: false,
   loaded: false,
-  error: null
+  error: null,
 };
 
 const clientsReducer = createReducer(
@@ -23,14 +23,19 @@ const clientsReducer = createReducer(
   on(fromActions.loadClients, (state: State, { clients }) => ({
     ...state,
     clients,
-    loaded: true
+    loaded: true,
+  })),
+  on(fromActions.loadClientsOnInitApiSuccess, (state: State, { clients }) => ({
+    ...state,
+    clients,
+    loaded: true,
   })),
   on(fromActions.saveClient, (state: State, { client }) => {
     return {
       ...state,
       id: state.clients.length,
       clients: [...state.clients, client],
-      loaded: true
+      loaded: true,
     };
   }),
   on(fromActions.updateClient, (state: State, { id, client }) => {
