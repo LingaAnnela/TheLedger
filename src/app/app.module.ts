@@ -24,14 +24,14 @@ import { TranslocoRootModule } from './transloco-root.module';
 
 const ROUTES: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'clients', loadChildren: './clients/clients.module#ClientsModule' },
+  { path: 'clients', loadChildren: './clients-module/clients.module#ClientsModule' },
   {
     path: 'auditbook',
-    loadChildren: './auditbook/auditbook.module#AuditBookModule'
+    loadChildren: './auditbook-module/auditbook.module#AuditBookModule'
   },
   {
     path: 'chitfunds',
-    loadChildren: './chitfund/chitfund.module#ChitfundModule'
+    loadChildren: './chitfund-module/chitfund.module#ChitfundModule'
   },
   { path: '**', redirectTo: '' }
 ];

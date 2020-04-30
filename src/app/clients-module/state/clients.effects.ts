@@ -7,7 +7,7 @@ import {
   switchMap,
   catchError,
 } from 'rxjs/operators';
-import * as fromActions from '../state/clients.actions';
+import * as fromActions from './clients.actions';
 import { ClientsService } from '../services/client.service';
 import { of } from 'rxjs';
 
