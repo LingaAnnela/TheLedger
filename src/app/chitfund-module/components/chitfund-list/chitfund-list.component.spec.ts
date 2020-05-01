@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChitfundsComponent } from './chitfunds.component';
+import { ChitfundListComponent } from './chitfund-list.component';
 
-describe('ChitfundsComponent', () => {
-  let component: ChitfundsComponent;
-  let fixture: ComponentFixture<ChitfundsComponent>;
+describe('ChitfundListComponent', () => {
+  let component: ChitfundListComponent;
+  let fixture: ComponentFixture<ChitfundListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChitfundsComponent ]
+      declarations: [ ChitfundListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChitfundsComponent);
+    fixture = TestBed.createComponent(ChitfundListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
