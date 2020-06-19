@@ -66,7 +66,7 @@ exports.get_client_by_id = (req, res, next) => {
 };
 
 exports.create_client = (req, res, next) => {
-  console.log(req.file);
+  console.log('::: ---- ::::: ', req.file);
   const client = new Client({
     _id: new mongoose.Types.ObjectId(),
     firstName: req.body.firstName,
@@ -82,7 +82,7 @@ exports.create_client = (req, res, next) => {
       console.log("Added : " + doc.displayPic);
       res.status(201).json({
         message: "Client added successfully!",
-        clientAdded: {
+        client: {
           id: doc._id,
           firstName: doc.firstName,
           lastName: doc.lastName,
@@ -123,9 +123,10 @@ exports.remove_client_by_id = (req, res, next) => {
 exports.update_client_by_id = (req, res, next) => {
   const id = req.params.clientId;
   const updateOps = {};
-  for (const ops of req.body) {
-    updateOps[ops.propName] = ops.value;
+  for (const [key, value]  of Object.entries(req.body)) {
+    updateOps[key] = value;
   }
+  console.log(': 1 : ', updateOps);
   Client.updateOne(
     {
       _id: id,
@@ -136,15 +137,12 @@ exports.update_client_by_id = (req, res, next) => {
   )
     .exec()
     .then((doc) => {
+      console.log(': : ', doc._id);
       res.status(200).json({
         message: `Updated succesufully`,
-        response: {
-          id: doc._id,
-          firstName: doc.firstName,
-          lastName: doc.lastName,
-          email: doc.email,
-          phoneNo: doc.phoneNo,
-          displayPic: doc.displayPic,
+        client: {
+          // ?? 
+          ...updateOps,
           request: {
             type: "GET",
             url: "http://localhost:3000/api/clients/" + doc._id,

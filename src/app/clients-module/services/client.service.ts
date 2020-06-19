@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { ManageclientDialogComponent } from '../components/manageclient-dialog/manageclient-dialog.component';
 import { Client } from 'src/app/models/client.model';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -14,15 +14,7 @@ export class ClientsService {
 
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 
-  showManageClientDialogWithClosedRef({
-    type,
-    id,
-    client,
-  }: {
-    type: string;
-    id: any;
-    client: Client;
-  }) {
+  showManageClientDialogWithClosedRef(type: string, id: any, client: Client) {
     let height = '';
     let width = '';
 
@@ -73,7 +65,15 @@ export class ClientsService {
     return this.clientsUpdated.asObservable();
   }
 
-  saveClient(client: any) {
-    return this.http.post('http://localhost:3000/api/clients', client);
+  saveClient(client: any): Observable<{ client: Client, request: any}> {
+    return this.http.post<{ client: Client, request: any}>('http://localhost:3000/api/clients', client);
+  }
+
+  updateClient(id: number, client: Client): Observable<{ client: Client, request: any}> {
+    return this.http.patch<{ client: Client, request: any}>(`http://localhost:3000/api/clients/${id}`, client);
+  }
+
+  deleteClient(id: number) {
+    return this.http.delete(`http://localhost:3000/api/clients/${id}`);
   }
 }

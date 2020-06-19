@@ -41,10 +41,12 @@ router.get("/:clientId", clientCtrl.get_client_by_id);
 // router.post('/', checkAuth, upload.single('clientImage'), clientCtrl.create_client);
 router.post("/", upload.single("clientImage"), clientCtrl.create_client);
 
-router.delete("/:clientId", checkAuth, clientCtrl.remove_client_by_id);
+router.delete("/:clientId", clientCtrl.remove_client_by_id);
+// router.delete("/:clientId", checkAuth, clientCtrl.remove_client_by_id);
 
 //Used to update the field but not to add the new fields! and the req.body should be array of items.
 // EX: [ {"propName" : "email" , "value" : "sruthi@gmail.com"}]
-router.patch("/:clientId", checkAuth, clientCtrl.update_client_by_id);
+router.patch("/:clientId", clientCtrl.update_client_by_id);
+// router.patch("/:clientId", checkAuth, clientCtrl.update_client_by_id);
 
 module.exports = router;

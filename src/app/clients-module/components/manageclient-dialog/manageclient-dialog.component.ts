@@ -16,6 +16,11 @@ import * as fromSelectors from '../../state/clients.selectors';
 import * as fromActions from '../../state/clients.actions';
 import { Subscription } from 'rxjs';
 
+export interface DialogData{
+  data: any;
+  type: string;
+  id: any;
+}
 @Component({
   selector: 'app-manageclient-dialog',
   templateUrl: './manageclient-dialog.component.html',
@@ -43,7 +48,7 @@ export class ManageclientDialogComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<{}>,
     public dialogRef: MatDialogRef<ManageclientDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public dialogData
+    @Inject(MAT_DIALOG_DATA) public dialogData: DialogData
   ) {}
 
   ngOnInit() {
@@ -54,7 +59,7 @@ export class ManageclientDialogComponent implements OnInit, OnDestroy {
     this.isNewClicked = this.dialogData.type === 'NEW' ? true : false;
     this.isDeleteClicked = this.dialogData.type === 'DELETE' ? true : false;
     this.isViewClicked = this.dialogData.type === 'VIEW' ? true : false;
-    const sub = this.store.select(fromSelectors.selectClientById, { id: this.dialogData.id }).subscribe(res => {
+    const sub = this.store.select(fromSelectors.selectClientEntityById, { id: this.dialogData.id }).subscribe(res => {
       this.clientData = this.dialogData.data;
       if (this.isEditClicked) {
         this.editForm = new FormGroup({
@@ -107,7 +112,7 @@ export class ManageclientDialogComponent implements OnInit, OnDestroy {
         fromActions.saveClient({ client })
       );
     } else if (this.isDeleteClicked){
-      this.store.dispatch(fromActions.deleteClient({ id: this.id }));
+      this.store.dispatch(fromActions.deleteClient({ id: this.dialogData.data.id }));
     }
 
     this.dialogRef.close();
@@ -118,7 +123,7 @@ export class ManageclientDialogComponent implements OnInit, OnDestroy {
       console.error('The form is invalid');
     } else {
       this.store.dispatch(
-        fromActions.updateClient({ id: this.id, client: this.editForm.value })
+        fromActions.updateClient({ id: this.dialogData.data.id, client: this.editForm.value })
       );
       this.dialogRef.close();
     }

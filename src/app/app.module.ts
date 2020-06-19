@@ -9,6 +9,7 @@ import { ChartModule } from '../../node_modules/primeng/chart';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './shared/material.module';
@@ -62,6 +63,7 @@ const ROUTES: Routes = [
     StoreDevtoolsModule.instrument({
       maxAge: 25 // Retains last 25 states
     }),
+    StoreRouterConnectingModule.forRoot(),
     RouterModule.forRoot(ROUTES),
     TranslocoRootModule
   ],
