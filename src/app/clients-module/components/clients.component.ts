@@ -1,21 +1,20 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { MatDialog } from "@angular/material";
-import { Store } from "@ngrx/store";
-import { Subscription } from "rxjs";
-import { Client } from "src/app/models/client.model";
-import { mockClients } from "src/app/mock.data";
-import * as fromSelectors from "../state/clients.selectors";
-import * as fromActions from "../state/clients.actions";
-import { ClientsService } from "../services/client.service";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Store, select } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { ClientsService } from '../services/client.service';
+import { Client } from '../../models/client.model';
+import * as fromSelectors from '../state/clients.selectors';
+import * as fromActions from '../state/clients.actions';
 
 @Component({
-  selector: "app-clients",
-  templateUrl: "./clients.component.html",
-  styleUrls: ["./clients.component.scss"],
+  selector: 'app-clients',
+  templateUrl: './clients.component.html',
+  styleUrls: ['./clients.component.scss'],
 })
 export class ClientsComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
-  clientsSelector$ = this.store.select(fromSelectors.clientsSelector);
+  clientsSelector$ = this.store.pipe(select(fromSelectors.selectClientsArr));
   public clients: Client[];
 
   constructor(
@@ -40,7 +39,7 @@ export class ClientsComponent implements OnInit, OnDestroy {
   onViewClient(data: Client, index) {
     this.store.dispatch(
       fromActions.openManageClientModal({
-        typeOfOperation: "VIEW",
+        typeOfOperation: 'VIEW',
         id: index,
         client: data,
       })
@@ -49,14 +48,14 @@ export class ClientsComponent implements OnInit, OnDestroy {
 
   onAddClient() {
     this.store.dispatch(
-      fromActions.openManageClientModal({ typeOfOperation: "NEW", id: 0 })
+      fromActions.openManageClientModal({ typeOfOperation: 'NEW', id: 0 })
     );
   }
 
   onEditClient(data: Client, index) {
     this.store.dispatch(
       fromActions.openManageClientModal({
-        typeOfOperation: "EDIT",
+        typeOfOperation: 'EDIT',
         id: index,
         client: data,
       })
@@ -66,7 +65,7 @@ export class ClientsComponent implements OnInit, OnDestroy {
   onDeleteClient(data: Client, index) {
     this.store.dispatch(
       fromActions.openManageClientModal({
-        typeOfOperation: "DELETE",
+        typeOfOperation: 'DELETE',
         id: index,
         client: data,
       })

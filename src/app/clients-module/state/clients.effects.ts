@@ -6,6 +6,7 @@ import {
   exhaustMap,
   switchMap,
   catchError,
+  tap,
 } from 'rxjs/operators';
 import * as fromActions from './clients.actions';
 import { ClientsService } from '../services/client.service';
@@ -20,11 +21,11 @@ export class ClientsEffects {
       ofType(fromActions.openManageClientModal),
       exhaustMap((action) =>
         this.service
-          .showManageClientDialogWithClosedRef({
-            type: action.typeOfOperation,
-            id: action.id,
-            client: action.client,
-          })
+          .showManageClientDialogWithClosedRef(
+            action.typeOfOperation,
+            action.id,
+            action.client,
+          )
           .pipe(map(() => fromActions.closeManageClientModal()))
       )
     )
@@ -53,7 +54,41 @@ export class ClientsEffects {
       switchMap((action) =>
         this.service.saveClient(action.client).pipe(
           // Save it to the store!!
-          map((res) => fromActions.saveClientApiSuccess()),
+          // tap(() => console.log(res)),
+          map(({client, request }) => fromActions.saveClientApiSuccess({
+            client,
+            request
+          })),
+          catchError((error) => of(fromActions.saveClientApiFailed({ error })))
+        )
+      )
+    )
+  );
+
+  onUpdateClient$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.updateClient),
+      switchMap((action) =>
+        this.service.updateClient(action.id, action.client).pipe(
+          // Save it to the store!!
+          // tap(() => console.log(res)),
+          map(({client, request }) => fromActions.updateClientApiSuccess({
+            client,
+            request
+          })),
+          catchError((error) => of(fromActions.saveClientApiFailed({ error })))
+        )
+      )
+    )
+  );
+
+  onDeleteClient$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.deleteClient),
+      switchMap((action) =>
+        this.service.deleteClient(action.id).pipe(
+          // Save it to the store!!
+          map((res) => fromActions.deleteClientApiSuccess( { id: action.id })),
           catchError((error) => of(fromActions.saveClientApiFailed({ error })))
         )
       )
